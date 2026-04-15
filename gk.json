@@ -1,0 +1,58 @@
+[
+  {
+    "q": "Which country has the most UNESCO World Heritage Sites?",
+    "o": ["China", "Italy", "France", "India"],
+    "a": "Italy",
+    "hint": "This country gave the world the Renaissance, Roman Empire, and priceless art",
+    "explanation": "Italy has 58 UNESCO World Heritage Sites (as of 2023), the most of any country, including the Colosseum, Venice, Pompeii, and the Amalfi Coast. China is second with 57. India has 42."
+  },
+  {
+    "q": "How many bones does an adult human body have?",
+    "o": ["196", "206", "216", "226"],
+    "a": "206",
+    "hint": "Babies are born with about 270-300 bones that fuse over time",
+    "explanation": "Adults have exactly 206 bones. Babies are born with ~270-300 bones; many fuse together during childhood. The smallest bone is the stapes in the ear (3mm); the largest is the femur (thigh bone)."
+  },
+  {
+    "q": "In which sport is the 'Duckworth-Lewis-Stern method' used?",
+    "o": ["Football", "Cricket", "Tennis", "Basketball"],
+    "a": "Cricket",
+    "hint": "It's used when rain interrupts a limited-overs match",
+    "explanation": "The DLS method recalculates target scores in rain-interrupted cricket matches using a statistical formula that considers wickets lost and overs remaining. Developed by statisticians Frank Duckworth and Tony Lewis (1997)."
+  },
+  {
+    "q": "Which gas makes up the most of Earth's atmosphere?",
+    "o": ["Oxygen", "Carbon Dioxide", "Hydrogen", "Nitrogen"],
+    "a": "Nitrogen",
+    "hint": "It's not the gas we need to breathe — that's only about 21% of the atmosphere",
+    "explanation": "Earth's atmosphere: ~78% Nitrogen (N₂), ~21% Oxygen (O₂), ~1% Argon, ~0.04% CO₂. Although we breathe oxygen, nitrogen is far more abundant — it's relatively inert and dilutes the oxygen to a safe level."
+  },
+  {
+    "q": "Who invented the telephone?",
+    "o": ["Thomas Edison", "Nikola Tesla", "Alexander Graham Bell", "James Watt"],
+    "a": "Alexander Graham Bell",
+    "hint": "He made the first telephone call to his assistant, Thomas Watson, in 1876",
+    "explanation": "Alexander Graham Bell patented the telephone in 1876. His famous first words: 'Mr. Watson, come here — I want to see you.' However, Italian inventor Antonio Meucci had created a similar device earlier but lacked funds to patent it."
+  },
+  {
+    "q": "What is the national currency of Japan?",
+    "o": ["Yuan", "Won", "Ringgit", "Yen"],
+    "a": "Yen",
+    "hint": "Its symbol is ¥ — same symbol shared with Chinese currency",
+    "explanation": "Japan's currency is the Yen (¥, JPY). China uses Yuan (¥, CNY) — both share the ¥ symbol but are different currencies. Japan's ¥1 coin is the only coin in the world made of pure aluminum."
+  },
+  {
+    "q": "Which planet is known as the 'Red Planet'?",
+    "o": ["Jupiter", "Venus", "Saturn", "Mars"],
+    "a": "Mars",
+    "hint": "Its reddish color comes from iron oxide (rust) on its surface",
+    "explanation": "Mars appears red because its surface is rich in iron oxide (rust). It has the largest volcano in the solar system (Olympus Mons, 3x taller than Everest) and a 24-hour 37-minute day — closest to Earth's!"
+  },
+  {
+    "q": "The 2024 Summer Olympics were held in which city?",
+    "o": ["Los Angeles", "Tokyo", "Paris", "Brisbane"],
+    "a": "Paris",
+    "hint": "France hosted the Olympics exactly 100 years after it last hosted in 1924",
+    "explanation": "Paris 2024 (July 26 – August 11, 2024) was a landmark Olympics: breakdancing debuted, the Seine River was used for triathlon/marathon swimming, and the opening ceremony was held along the River Seine — a first in Olympic history!"
+  }
+]

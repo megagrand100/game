@@ -1,0 +1,58 @@
+[
+  {
+    "q": "Choose the correct synonym for 'Eloquent':",
+    "o": ["Silent", "Articulate", "Confused", "Ignorant"],
+    "a": "Articulate",
+    "hint": "An eloquent speaker expresses ideas fluently and persuasively",
+    "explanation": "'Eloquent' means having or exercising the power of fluent, forceful, and appropriate speech. Synonyms: articulate, silver-tongued, persuasive. Antonyms: inarticulate, tongue-tied, incoherent."
+  },
+  {
+    "q": "Identify the figure of speech: 'The moon was a silver coin in the sky.'",
+    "o": ["Simile", "Personification", "Metaphor", "Hyperbole"],
+    "a": "Metaphor",
+    "hint": "It directly states one thing IS another — no 'like' or 'as' is used",
+    "explanation": "A Metaphor directly compares two unlike things (moon = silver coin). A Simile would say 'like a silver coin'. Personification gives human traits to objects. This metaphor emphasizes the moon's round, shiny, small appearance."
+  },
+  {
+    "q": "What is the plural of 'phenomenon'?",
+    "o": ["Phenomenons", "Phenomenas", "Phenomena", "Phenomenon"],
+    "a": "Phenomena",
+    "hint": "This word comes from Greek and follows an irregular Greek plural rule",
+    "explanation": "'Phenomena' is the correct plural, from Greek 'phainomenon'. Similarly: criterion→criteria, datum→data, medium→media. 'Phenomenons' is increasingly accepted in informal usage but 'phenomena' remains standard."
+  },
+  {
+    "q": "Which sentence uses the subjunctive mood correctly?",
+    "o": ["If I was rich, I will travel.", "If I were rich, I would travel.", "If I am rich, I would travel.", "If I were rich, I will travel."],
+    "a": "If I were rich, I would travel.",
+    "hint": "The subjunctive expresses hypothetical or contrary-to-fact conditions",
+    "explanation": "The subjunctive uses 'were' (not 'was') for hypothetical conditions: 'If I were you...' The pattern is: If + past subjunctive (were), + would + infinitive. 'Was' is used for real past situations; 'were' for unreal/wishful."
+  },
+  {
+    "q": "What is the antonym of 'Loquacious'?",
+    "o": ["Talkative", "Verbose", "Reticent", "Garrulous"],
+    "a": "Reticent",
+    "hint": "Loquacious means very talkative; its opposite would be someone who speaks very little",
+    "explanation": "'Loquacious' = excessively talkative (from Latin loqui = to speak). Its antonym 'Reticent' = not revealing one's thoughts or feelings. Other antonyms: taciturn, reserved, quiet. Garrulous and Verbose are synonyms."
+  },
+  {
+    "q": "In the sentence 'She gave him a book', what is 'him'?",
+    "o": ["Direct Object", "Subject", "Indirect Object", "Predicate"],
+    "a": "Indirect Object",
+    "hint": "The direct object is what was given; the indirect object is WHO received it",
+    "explanation": "In 'She gave him a book': Subject=She, Verb=gave, Direct Object=book (what was given), Indirect Object=him (who received it). Indirect objects answer 'to whom?' or 'for whom?' the action was done."
+  },
+  {
+    "q": "Choose the correctly spelled word:",
+    "o": ["Accomodate", "Accommodate", "Acommodate", "Acomodate"],
+    "a": "Accommodate",
+    "hint": "Remember: double 'c' AND double 'm' — it can accommodate two c's and two m's!",
+    "explanation": "'Accommodate' has double 'c' and double 'm'. Memory trick: it's large enough to accommodate two c's and two m's! Other commonly misspelled: occurrence (2 c's, 2 r's), separately (not 'seperately')."
+  },
+  {
+    "q": "What literary device is used in: 'Peter Piper picked a peck of pickled peppers'?",
+    "o": ["Assonance", "Onomatopoeia", "Alliteration", "Consonance"],
+    "a": "Alliteration",
+    "hint": "Listen to the repeating sound at the BEGINNING of words",
+    "explanation": "Alliteration = repetition of the same consonant sound at the start of nearby words (P-P-P-P). Assonance = vowel sound repetition within words. Onomatopoeia = words that sound like what they describe (buzz, sizzle)."
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "q": "What does HTML stand for?",
+    "o": ["HyperText Markup Language", "High Transfer Markup Language", "HyperText Machine Language", "Hyperlink and Text Markup Language"],
+    "a": "HyperText Markup Language",
+    "hint": "The 'H' refers to links (hyperlinks) and the 'M' is for markup — structure of web pages",
+    "explanation": "HTML (HyperText Markup Language) is the standard language for web pages. 'HyperText' = text with links. 'Markup' = using tags like <p>, <h1> to structure content. Created by Tim Berners-Lee in 1991."
+  },
+  {
+    "q": "What is the binary representation of the decimal number 13?",
+    "o": ["1011", "1101", "1010", "1110"],
+    "a": "1101",
+    "hint": "13 = 8 + 4 + 1 = 2³ + 2² + 2⁰",
+    "explanation": "13 in binary: 13÷2=6 R1, 6÷2=3 R0, 3÷2=1 R1, 1÷2=0 R1. Reading remainders bottom-up: 1101. Verify: 1×8 + 1×4 + 0×2 + 1×1 = 13 ✓"
+  },
+  {
+    "q": "Which data structure works on the LIFO (Last In, First Out) principle?",
+    "o": ["Queue", "Stack", "Linked List", "Tree"],
+    "a": "Stack",
+    "hint": "Think of a stack of plates — you always add and remove from the top",
+    "explanation": "A Stack follows LIFO: the last element added (pushed) is the first one removed (popped). Real-world examples: browser back button, undo in text editors, function call management in programs."
+  },
+  {
+    "q": "Who is known as the 'Father of the Internet'?",
+    "o": ["Tim Berners-Lee", "Bill Gates", "Vint Cerf", "Dennis Ritchie"],
+    "a": "Vint Cerf",
+    "hint": "He co-created the TCP/IP protocols that power the internet",
+    "explanation": "Vint Cerf (with Bob Kahn) designed TCP/IP in 1974 — the fundamental protocols of the internet. Tim Berners-Lee invented the World Wide Web (WWW) in 1989, which runs ON TOP of the internet."
+  },
+  {
+    "q": "What is a 'deadlock' in operating systems?",
+    "o": ["When CPU overheats", "When two processes wait for each other indefinitely", "When RAM is full", "When a program crashes"],
+    "a": "When two processes wait for each other indefinitely",
+    "hint": "Imagine two people each holding one key the other needs, both waiting",
+    "explanation": "Deadlock occurs when 2+ processes each hold a resource and wait for the other's resource — creating a circular dependency. Four conditions for deadlock: Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait."
+  },
+  {
+    "q": "What does SQL stand for?",
+    "o": ["Structured Query Language", "Simple Query Language", "Sequential Query Language", "Standard Query Logic"],
+    "a": "Structured Query Language",
+    "hint": "It's used to manage and manipulate relational databases",
+    "explanation": "SQL (Structured Query Language) is used to interact with relational databases. Core commands: SELECT (retrieve), INSERT (add), UPDATE (modify), DELETE (remove), CREATE (build tables). Invented by IBM in the 1970s."
+  },
+  {
+    "q": "In Object-Oriented Programming, what does 'encapsulation' mean?",
+    "o": ["Inheriting from parent class", "Wrapping data and methods in a single unit", "Creating multiple object instances", "Hiding the implementation"],
+    "a": "Wrapping data and methods in a single unit",
+    "hint": "Think of a capsule/pill that contains everything inside it",
+    "explanation": "Encapsulation bundles data (attributes) and methods (functions) together inside a class, controlling access via public/private/protected modifiers. It protects internal state and reduces dependencies. Combined with abstraction, it's a core OOP pillar."
+  },
+  {
+    "q": "What is the time complexity of binary search?",
+    "o": ["O(n)", "O(n²)", "O(log n)", "O(n log n)"],
+    "a": "O(log n)",
+    "hint": "Each step eliminates HALF of the remaining elements",
+    "explanation": "Binary search on a sorted array takes O(log n) because each comparison halves the search space. With 1 million elements, it takes at most log₂(1,000,000) ≈ 20 comparisons! Linear search would take up to 1,000,000."
+  }
+]

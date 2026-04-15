@@ -1,0 +1,58 @@
+[
+  {
+    "q": "If 15% of a number is 45, what is the number?",
+    "o": ["200", "300", "250", "350"],
+    "a": "300",
+    "hint": "Reverse percentage: divide 45 by 0.15",
+    "explanation": "15% of x = 45 → x = 45 ÷ 0.15 = 300. Always divide the given value by the percentage (in decimal form) to find the original number."
+  },
+  {
+    "q": "What is the value of √(144) + √(25)?",
+    "o": ["17", "19", "21", "13"],
+    "a": "17",
+    "hint": "√144 = 12 and √25 = 5. Add them!",
+    "explanation": "√144 = 12 (since 12×12=144) and √25 = 5 (since 5×5=25). So 12 + 5 = 17."
+  },
+  {
+    "q": "Find the LCM of 12, 18, and 24.",
+    "o": ["36", "48", "72", "96"],
+    "a": "72",
+    "hint": "Prime factorize each: 12=2²×3, 18=2×3², 24=2³×3",
+    "explanation": "LCM = highest power of each prime: 2³ × 3² = 8 × 9 = 72. LCM is always ≥ the largest number."
+  },
+  {
+    "q": "Solve: 3x² - 12 = 0. Find x.",
+    "o": ["x = ±2", "x = ±4", "x = ±3", "x = ±6"],
+    "a": "x = ±2",
+    "hint": "First divide both sides by 3, then take square root",
+    "explanation": "3x²= 12 → x² = 4 → x = ±√4 = ±2. Remember: square root gives both positive and negative answers."
+  },
+  {
+    "q": "What is the sum of interior angles of a hexagon?",
+    "o": ["540°", "720°", "660°", "600°"],
+    "a": "720°",
+    "hint": "Formula: (n-2) × 180°, where n = number of sides",
+    "explanation": "For a hexagon, n=6: (6-2) × 180° = 4 × 180° = 720°. This formula works for any polygon!"
+  },
+  {
+    "q": "If a = 5 and b = -3, find a² + 2ab + b²",
+    "o": ["4", "16", "64", "8"],
+    "a": "4",
+    "hint": "Recognize the pattern: this is (a + b)²",
+    "explanation": "a² + 2ab + b² = (a+b)² = (5+(-3))² = (2)² = 4. Algebraic identity saves time!"
+  },
+  {
+    "q": "A train 200m long passes a pole in 10 seconds. What is its speed in km/h?",
+    "o": ["60 km/h", "72 km/h", "80 km/h", "90 km/h"],
+    "a": "72 km/h",
+    "hint": "Speed = Distance/Time, then convert m/s to km/h by multiplying by 18/5",
+    "explanation": "Speed = 200/10 = 20 m/s. Convert: 20 × (18/5) = 72 km/h. Always remember: m/s × 3.6 = km/h."
+  },
+  {
+    "q": "What is 2⁸ ÷ 2⁵?",
+    "o": ["4", "8", "16", "32"],
+    "a": "8",
+    "hint": "Use the rule: aᵐ ÷ aⁿ = aᵐ⁻ⁿ",
+    "explanation": "2⁸ ÷ 2⁵ = 2^(8-5) = 2³ = 8. Division of same bases means subtract the exponents!"
+  }
+]

@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🌌 Cosmic Academy — Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── CSS Variables ──────────────────────────────────── */
+:root {
+  --bg: #050714;
+  --card: rgba(10, 14, 40, 0.92);
+  --border: rgba(255,255,255,0.07);
+  --text: #dde6ff;
+  --dim: #7b8ab8;
+  --c-math: #00d4ff;
+  --c-science: #39ff14;
+  --c-history: #ff8c00;
+  --c-geo: #00ffc8;
+  --c-cs: #c77dff;
+  --c-eng: #ff006e;
+  --c-gk: #ffd700;
+  --c-arts: #ff6b6b;
+  --active: #00d4ff;
+  --success: #39ff14;
+  --error: #ff4466;
+  --radius: 16px;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── Reset & Base ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ─── Starfield Canvas ───────────────────────────────── */
+#starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Nebula glow blobs ──────────────────────────────── */
+.nebula {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  animation: nebula-pulse 8s ease-in-out infinite alternate;
+}
+.nebula-1 { width: 600px; height: 600px; background: #00d4ff; top: -200px; left: -200px; }
+.nebula-2 { width: 500px; height: 500px; background: #c77dff; bottom: -150px; right: -150px; animation-delay: -4s; }
+.nebula-3 { width: 400px; height: 400px; background: #ff006e; top: 40%; left: 60%; animation-delay: -2s; }
+
+@keyframes nebula-pulse {
+  from { opacity: 0.08; transform: scale(1); }
+  to { opacity: 0.18; transform: scale(1.1); }
+}
+
+/* ─── Screen System ──────────────────────────────────── */
+.screen {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.screen.active { display: flex; }
+
+/* ─── HOME SCREEN ────────────────────────────────────── */
+.home-header {
+  text-align: center;
+  margin-bottom: 48px;
+  margin-top: 40px;
+  animation: fade-down 0.8s ease both;
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-ring {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 3px solid rgba(0,212,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0,212,255,0.3);
+  animation: spin-ring 12s linear infinite;
+}
+@keyframes spin-ring {
+  from { box-shadow: 0 0 40px rgba(0,212,255,0.3); border-color: rgba(0,212,255,0.5); }
+  33% { box-shadow: 0 0 40px rgba(199,125,255,0.3); border-color: rgba(199,125,255,0.5); }
+  66% { box-shadow: 0 0 40px rgba(255,0,110,0.3); border-color: rgba(255,0,110,0.5); }
+  to { box-shadow: 0 0 40px rgba(0,212,255,0.3); border-color: rgba(0,212,255,0.5); }
+}
+.logo-ring::before, .logo-ring::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.2);
+}
+.logo-ring::before { width: 100px; height: 100px; }
+.logo-ring::after { width: 120px; height: 120px; }
+.logo-ring span { font-size: 32px; }
+
+.home-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #00d4ff 0%, #c77dff 50%, #ff006e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.home-sub {
+  color: var(--dim);
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+.choose-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  animation: fade-up 0.8s ease 0.3s both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Subject Grid ───────────────────────────────────── */
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 960px;
+  animation: fade-up 0.8s ease 0.5s both;
+}
+
+.subject-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+
+.subject-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.subject-card::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: -2px; right: -2px;
+  height: 3px;
+  background: var(--color);
+  border-radius: 0 0 var(--radius) var(--radius);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.subject-card:hover {
+  border-color: var(--color);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px color-mix(in srgb, var(--color) 30%, transparent);
+}
+.subject-card:hover::before { opacity: 0.08; }
+.subject-card:hover::after { transform: scaleX(1); }
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  display: block;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--color) 60%, transparent));
+  transition: transform var(--transition);
+}
+.subject-card:hover .card-icon { transform: scale(1.15) rotate(-5deg); }
+
+.card-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color);
+  letter-spacing: 1px;
+}
+.card-desc {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.card-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--color);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.card-count::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color);
+  animation: blink 2s ease infinite;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* ─── QUIZ SCREEN ────────────────────────────────────── */
+.quiz-container {
+  width: 100%;
+  max-width: 720px;
+  padding-top: 20px;
+}
+
+/* Top bar */
+.quiz-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+.btn-back {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-family: 'Exo 2', sans-serif;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+  backdrop-filter: blur(8px);
+}
+.btn-back:hover { border-color: var(--active); color: var(--active); }
+
+.quiz-subject-badge {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--color, var(--active));
+  color: var(--color, var(--active));
+  background: color-mix(in srgb, var(--color, var(--active)) 10%, transparent);
+}
+
+.quiz-score-display {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--gk, #ffd700);
+}
+.score-star { font-size: 14px; }
+
+/* Progress */
+.progress-wrapper {
+  margin-bottom: 20px;
+}
+.progress-meta {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--dim);
+  margin-bottom: 8px;
+  font-family: 'Rajdhani', sans-serif;
+}
+.progress-track {
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--active), var(--color, #c77dff));
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 10px var(--active);
+}
+
+/* Timer */
+.timer-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+}
+.timer-bar-track {
+  flex: 1; height: 6px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.timer-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s linear, background 1s linear;
+  background: var(--success);
+}
+.timer-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 28px;
+  text-align: right;
+  transition: color 0.5s;
+}
+
+/* Question Card */
+.question-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 28px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  animation: card-in 0.5s cubic-bezier(0.4,0,0.2,1) both;
+}
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color, var(--active)), transparent);
+  opacity: 0.7;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.q-number {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--color, var(--active));
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+.q-number::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color, var(--active));
+  opacity: 0.2;
+}
+
+.question-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(18px, 3.5vw, 22px);
+  font-weight: 600;
+  line-height: 1.55;
+  color: #eef2ff;
+}
+
+/* Streak */
+.streak-badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+  background: rgba(255,140,0,0.15);
+  border: 1px solid rgba(255,140,0,0.3);
+  border-radius: 20px;
+  padding: 4px 10px;
+  color: #ff8c00;
+  display: none;
+}
+.streak-badge.visible { display: block; animation: bounce 0.4s ease; }
+@keyframes bounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+
+/* Hint Box */
+.hint-section { margin-bottom: 12px; }
+.btn-hint {
+  background: transparent;
+  border: 1px dashed rgba(255,212,0,0.4);
+  color: rgba(255,212,0,0.8);
+  border-radius: 10px;
+  padding: 9px 18px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+.btn-hint:hover { background: rgba(255,212,0,0.08); border-color: rgba(255,212,0,0.7); }
+.hint-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+.hint-content.open { max-height: 200px; opacity: 1; }
+.hint-box {
+  background: rgba(255,212,0,0.05);
+  border: 1px solid rgba(255,212,0,0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 10px;
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px;
+  color: #ffe08a;
+  line-height: 1.5;
+}
+.hint-box .hi { font-size: 18px; flex-shrink: 0; margin-top: -1px; }
+
+/* Options Grid */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+@media (max-width: 500px) { .options-grid { grid-template-columns: 1fr; } }
+
+.option-btn {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 16px 18px;
+  color: var(--text);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  display: flex; align-items: center; gap: 12px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  line-height: 1.4;
+}
+.option-btn::before {
+  content: attr(data-letter);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dim);
+  transition: all var(--transition);
+}
+.option-btn:hover:not(:disabled) {
+  border-color: var(--color, var(--active));
+  background: color-mix(in srgb, var(--color, var(--active)) 8%, transparent);
+  transform: translateX(4px);
+}
+.option-btn:hover:not(:disabled)::before {
+  background: var(--color, var(--active));
+  color: #000;
+  border-color: transparent;
+}
+
+.option-btn.correct {
+  border-color: var(--success);
+  background: rgba(57,255,20,0.1);
+  color: #39ff14;
+}
+.option-btn.correct::before { background: var(--success); color: #000; border-color: transparent; }
+.option-btn.wrong {
+  border-color: var(--error);
+  background: rgba(255,68,102,0.1);
+  color: #ff8fa3;
+}
+.option-btn.wrong::before { background: var(--error); color: #fff; border-color: transparent; }
+.option-btn:disabled { cursor: not-allowed; opacity: 0.7; transform: none !important; }
+
+.option-icon {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.option-btn.correct .option-icon,
+.option-btn.wrong .option-icon { opacity: 1; }
+
+/* Feedback */
+.feedback-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  max-height: 0;
+  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+  margin-bottom: 16px;
+}
+.feedback-panel.open { max-height: 600px; }
+
+.feedback-header {
+  padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+}
+.feedback-header.correct { color: var(--success); border-bottom: 1px solid rgba(57,255,20,0.15); background: rgba(57,255,20,0.05); }
+.feedback-header.wrong { color: var(--error); border-bottom: 1px solid rgba(255,68,102,0.15); background: rgba(255,68,102,0.05); }
+
+.btn-explain {
+  display: flex; align-items: center; gap: 8px;
+  margin: 12px 20px;
+  background: transparent;
+  border: 1px solid rgba(0,212,255,0.3);
+  color: var(--active);
+  border-radius: 10px;
+  padding: 9px 16px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: fit-content;
+}
+.btn-explain:hover { background: rgba(0,212,255,0.08); }
+.btn-explain .arrow { transition: transform 0.3s; }
+.btn-explain.open .arrow { transform: rotate(180deg); }
+
+.explanation-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.explanation-body.open { max-height: 400px; }
+.explanation-text {
+  margin: 0 20px 20px;
+  padding: 14px 16px;
+  background: rgba(0,212,255,0.05);
+  border-left: 3px solid var(--active);
+  border-radius: 0 10px 10px 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #c8d8f0;
+}
+
+/* Next Button */
+.btn-next {
+  width: 100%;
+  padding: 17px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--color, var(--active)), color-mix(in srgb, var(--color, var(--active)) 70%, #c77dff));
+  color: #000;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--color, var(--active)) 35%, transparent);
+}
+.btn-next:hover { transform: translateY(-2px); box-shadow: 0 14px 40px color-mix(in srgb, var(--color, var(--active)) 50%, transparent); }
+.btn-next.visible { display: flex; animation: btn-appear 0.4s ease both; }
+@keyframes btn-appear { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── RESULT SCREEN ──────────────────────────────────── */
+.result-container {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  padding: 40px 20px 60px;
+}
+
+.result-ring {
+  width: 180px; height: 180px;
+  margin: 0 auto 30px;
+  position: relative;
+}
+.result-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.result-ring .track { stroke: rgba(255,255,255,0.07); }
+.result-ring .fill { stroke-dasharray: 502; stroke-dashoffset: 502; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1) 0.3s; }
+.result-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.result-score-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 44px; font-weight: 900;
+  line-height: 1;
+}
+.result-score-lbl {
+  font-size: 12px; color: var(--dim);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.result-grade {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.result-message {
+  font-size: 15px;
+  color: var(--dim);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.result-stats {
+  display: flex; justify-content: center; gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 10px 20px;
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; gap: 8px;
+}
+.stat-pill .sp-icon { font-size: 18px; }
+.stat-pill .sp-val {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700; font-size: 18px;
+}
+.stat-pill .sp-key { font-size: 12px; color: var(--dim); }
+
+.result-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.btn-restart, .btn-home-result {
+  padding: 14px 40px;
+  border-radius: 12px;
+  border: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s;
+}
+.btn-restart {
+  background: linear-gradient(135deg, var(--active), #c77dff);
+  color: #000;
+  box-shadow: 0 8px 30px rgba(0,212,255,0.3);
+}
+.btn-restart:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,212,255,0.45); }
+.btn-home-result {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  backdrop-filter: blur(8px);
+}
+.btn-home-result:hover { border-color: var(--active); color: var(--active); }
+
+/* ─── Confetti particle ──────────────────────────────── */
+.confetti-piece {
+  position: fixed;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 999;
+  animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+
+/* ─── Utility ────────────────────────────────────────── */
+.glow-text { text-shadow: 0 0 20px currentColor; }
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<canvas id="starfield"></canvas>
+<div class="nebula nebula-1"></div>
+<div class="nebula nebula-2"></div>
+<div class="nebula nebula-3"></div>
+
+<!-- ════════════════════════════════════════
+  HOME SCREEN
+═══════════════════════════════════════════ -->
+<div class="screen active" id="home-screen">
+  <header class="home-header">
+    <div class="logo-ring"><span>🌌</span></div>
+    <h1 class="home-title">Cosmic Academy</h1>
+    <p class="home-sub">Choose your subject &amp; challenge the cosmos</p>
+  </header>
+
+  <p class="choose-label">— Select Subject —</p>
+
+  <div class="subjects-grid" id="subjects-grid">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+  QUIZ SCREEN
+═══════════════════════════════════════════ -->
+<div class="screen" id="quiz-screen">
+  <div class="quiz-container">
+
+    <!-- Top bar -->
+    <div class="quiz-topbar">
+      <button class="btn-back" onclick="goHome()">← Back</button>
+      <div class="quiz-subject-badge" id="quiz-badge"></div>
+      <div class="quiz-score-display">
+        <span class="score-star">⭐</span>
+        <span id="score-val">0</span>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-wrapper">
+      <div class="progress-meta">
+        <span id="q-counter">Question 1 of 8</span>
+        <span id="streak-info"></span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Timer -->
+    <div class="timer-row">
+      <div class="timer-bar-track">
+        <div class="timer-bar-fill" id="timer-bar" style="width:100%"></div>
+      </div>
+      <div class="timer-label" id="timer-label">30</div>
+    </div>
+
+    <!-- Question Card -->
+    <div class="question-card" id="question-card">
+      <div class="streak-badge" id="streak-badge"></div>
+      <div class="q-number" id="q-number">QUESTION 01</div>
+      <div class="question-text" id="question-text"></div>
+    </div>
+
+    <!-- Hint -->
+    <div class="hint-section">
+      <button class="btn-hint" id="hint-btn" onclick="toggleHint()">
+        💡 Need a Hint?
+      </button>
+      <div class="hint-content" id="hint-content">
+        <div class="hint-box">
+          <span class="hi">💡</span>
+          <span id="hint-text"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Options -->
+    <div class="options-grid" id="options-grid"></div>
+
+    <!-- Feedback -->
+    <div class="feedback-panel" id="feedback-panel">
+      <div class="feedback-header" id="feedback-header"></div>
+      <button class="btn-explain" id="explain-btn" onclick="toggleExplanation()">
+        <span>📖 See Explanation</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="explanation-body" id="explanation-body">
+        <div class="explanation-text" id="explanation-text"></div>
+      </div>
+    </div>
+
+    <!-- Next -->
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">
+      Next Question →
+    </button>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+  RESULT SCREEN
+═══════════════════════════════════════════ -->
+<div class="screen" id="result-screen">
+  <div class="result-container">
+    <div class="result-ring">
+      <svg viewBox="0 0 160 160">
+        <circle class="track" cx="80" cy="80" r="70" stroke-width="10" fill="none"/>
+        <circle class="fill" id="result-ring-fill" cx="80" cy="80" r="70" stroke-width="10" fill="none" stroke="#00d4ff" stroke-linecap="round"/>
+      </svg>
+      <div class="result-center">
+        <div class="result-score-num glow-text" id="result-num" style="color:#00d4ff">0</div>
+        <div class="result-score-lbl">Score</div>
+      </div>
+    </div>
+
+    <div class="result-grade" id="result-grade"></div>
+    <div class="result-message" id="result-msg"></div>
+
+    <div class="result-stats">
+      <div class="stat-pill">
+        <span class="sp-icon">✅</span>
+        <div>
+          <div class="sp-val" id="stat-correct">0</div>
+          <div class="sp-key">Correct</div>
+        </div>
+      </div>
+      <div class="stat-pill">
+        <span class="sp-icon">❌</span>
+        <div>
+          <div class="sp-val" id="stat-wrong">0</div>
+          <div class="sp-key">Wrong</div>
+        </div>
+      </div>
+      <div class="stat-pill">
+        <span class="sp-icon">🔥</span>
+        <div>
+          <div class="sp-val" id="stat-streak">0</div>
+          <div class="sp-key">Best Streak</div>
+        </div>
+      </div>
+      <div class="stat-pill">
+        <span class="sp-icon">⏱️</span>
+        <div>
+          <div class="sp-val" id="stat-time">0s</div>
+          <div class="sp-key">Avg. Time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn-restart" onclick="restartQuiz()">🔄 Play Again</button>
+      <button class="btn-home-result" onclick="goHome()">← Choose Subject</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+  JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+/* ─── ALL QUESTION DATA (Embedded for offline use) ─────── */
+const QUIZ_DATA = {
+  math: {
+    name: "Mathematics",
+    icon: "🔢",
+    color: "#00d4ff",
+    desc: "Algebra, Geometry, Arithmetic",
+    questions: [
+      { q: "If 15% of a number is 45, what is the number?", o: ["200","300","250","350"], a: "300", hint: "Reverse percentage: divide 45 by 0.15", explanation: "15% of x = 45 → x = 45 ÷ 0.15 = 300. Always divide the given value by the percentage (in decimal form) to find the original number." },
+      { q: "What is the value of √144 + √25?", o: ["17","19","21","13"], a: "17", hint: "√144 = 12 and √25 = 5. Add them!", explanation: "√144 = 12 (since 12×12=144) and √25 = 5 (since 5×5=25). So 12 + 5 = 17." },
+      { q: "Find the LCM of 12, 18 and 24.", o: ["36","48","72","96"], a: "72", hint: "Prime factorize each: 12=2²×3, 18=2×3², 24=2³×3", explanation: "LCM = highest power of each prime: 2³ × 3² = 8 × 9 = 72. LCM is always ≥ the largest number." },
+      { q: "Solve: 3x² − 12 = 0. Find x.", o: ["x = ±2","x = ±4","x = ±3","x = ±6"], a: "x = ±2", hint: "First divide both sides by 3, then take square root", explanation: "3x² = 12 → x² = 4 → x = ±√4 = ±2. Remember: square root gives both positive and negative answers." },
+      { q: "Sum of interior angles of a hexagon?", o: ["540°","720°","660°","600°"], a: "720°", hint: "Formula: (n−2) × 180°, where n = number of sides", explanation: "For a hexagon, n=6: (6−2) × 180° = 4 × 180° = 720°. This formula works for any polygon!" },
+      { q: "If a=5 and b=−3, find a² + 2ab + b²", o: ["4","16","64","8"], a: "4", hint: "Recognize the pattern: this is (a + b)²", explanation: "a² + 2ab + b² = (a+b)² = (5+(−3))² = (2)² = 4. Algebraic identity saves time!" },
+      { q: "A train 200m long passes a pole in 10 seconds. Speed in km/h?", o: ["60 km/h","72 km/h","80 km/h","90 km/h"], a: "72 km/h", hint: "Speed = Distance/Time, then convert m/s to km/h by ×18/5", explanation: "Speed = 200/10 = 20 m/s. Convert: 20 × (18/5) = 72 km/h. Remember: m/s × 3.6 = km/h." },
+      { q: "What is 2⁸ ÷ 2⁵?", o: ["4","8","16","32"], a: "8", hint: "Rule: aᵐ ÷ aⁿ = aᵐ⁻ⁿ", explanation: "2⁸ ÷ 2⁵ = 2^(8−5) = 2³ = 8. Division of same bases = subtract the exponents!" }
+    ]
+  },
+  science: {
+    name: "Science",
+    icon: "⚗️",
+    color: "#39ff14",
+    desc: "Physics, Chemistry, Biology",
+    questions: [
+      { q: "Which gas do plants absorb during photosynthesis?", o: ["Oxygen","Nitrogen","Carbon Dioxide","Hydrogen"], a: "Carbon Dioxide", hint: "Plants breathe in what humans breathe out", explanation: "Plants absorb CO₂ and use sunlight + water to convert it into glucose and oxygen: 6CO₂ + 6H₂O + Light → C₆H₁₂O₆ + 6O₂." },
+      { q: "What is the speed of light in vacuum?", o: ["3×10⁶ m/s","3×10⁸ m/s","3×10¹⁰ m/s","3×10⁴ m/s"], a: "3×10⁸ m/s", hint: "It's approximately 300,000 kilometers per second", explanation: "Light travels at ~3×10⁸ m/s (299,792,458 m/s exactly). This constant 'c' is the universal speed limit!" },
+      { q: "Which is the powerhouse of the cell?", o: ["Nucleus","Ribosome","Mitochondria","Golgi Body"], a: "Mitochondria", hint: "It produces ATP — the energy currency of the cell", explanation: "Mitochondria produce ATP through cellular respiration. They have their own DNA, suggesting they were once independent bacteria (endosymbiotic theory)." },
+      { q: "Newton's Second Law of Motion:", o: ["F = m/a","F = ma","F = m+a","F = m²a"], a: "F = ma", hint: "Force equals mass times acceleration", explanation: "F = ma means: more mass or more acceleration requires more force. This is why it's harder to push a heavy truck than a bicycle at the same acceleration." },
+      { q: "Which planet has the most moons in our solar system?", o: ["Jupiter","Saturn","Uranus","Neptune"], a: "Saturn", hint: "This ringed planet recently broke the moon record with 140+ moons", explanation: "Saturn has 146 confirmed moons, surpassing Jupiter's 95. Titan, Saturn's largest moon, is bigger than Mercury and has a thick atmosphere!" },
+      { q: "Chemical symbol for Gold?", o: ["Go","Gd","Au","Ag"], a: "Au", hint: "Comes from the Latin word 'Aurum'", explanation: "Au comes from 'Aurum', the Latin name for gold. Many element symbols come from Latin — Fe=Iron/Ferrum, Pb=Lead/Plumbum. Gold is element number 79." },
+      { q: "Which blood group is the 'Universal Donor'?", o: ["A+","AB+","O−","B−"], a: "O−", hint: "This group lacks A, B antigens AND the Rh factor", explanation: "O− blood can be given to anyone because it lacks A antigens, B antigens, and the Rh factor. AB+ is the universal recipient." },
+      { q: "What causes a rainbow to form?", o: ["Reflection","Refraction & Dispersion","Diffraction","Interference"], a: "Refraction & Dispersion", hint: "White light bends and splits into component colors", explanation: "Raindrops act as prisms. Light refracts entering, reflects off the back, then refracts again exiting — different wavelengths bend differently, creating VIBGYOR." }
+    ]
+  },
+  history: {
+    name: "History",
+    icon: "📜",
+    color: "#ff8c00",
+    desc: "World & Indian History",
+    questions: [
+      { q: "In which year did India gain independence?", o: ["1945","1946","1947","1948"], a: "1947", hint: "At midnight between 14th and 15th August", explanation: "India became independent on August 15, 1947. The 'Tryst with Destiny' speech was delivered by Nehru at midnight. Pakistan was created on August 14." },
+      { q: "First Emperor of the Mughal Empire in India?", o: ["Akbar","Humayun","Babur","Aurangzeb"], a: "Babur", hint: "He won the First Battle of Panipat in 1526", explanation: "Babur founded the Mughal Empire after defeating Ibrahim Lodi at the First Battle of Panipat (1526). He was descended from both Timur and Genghis Khan." },
+      { q: "The French Revolution began in which year?", o: ["1776","1783","1789","1799"], a: "1789", hint: "The storming of the Bastille is its most iconic event", explanation: "The French Revolution began in 1789 with the storming of the Bastille on July 14 — now Bastille Day. It spread ideals of liberty, equality, and fraternity." },
+      { q: "Which ancient wonder of the world still exists?", o: ["Colossus of Rhodes","Great Pyramid of Giza","Lighthouse of Alexandria","Hanging Gardens"], a: "Great Pyramid of Giza", hint: "It's the oldest of the Seven Wonders and stands in Egypt", explanation: "The Great Pyramid (~2560 BCE) is the only ancient wonder still standing. Built for Pharaoh Khufu, it was the world's tallest structure for 3,800 years!" },
+      { q: "Who wrote India's national anthem 'Jana Gana Mana'?", o: ["Bankim Chandra","Rabindranath Tagore","Sarojini Naidu","Subramanya Bharati"], a: "Rabindranath Tagore", hint: "He was also the first Asian Nobel Prize winner in Literature (1913)", explanation: "Rabindranath Tagore composed Jana Gana Mana. It was officially adopted as the national anthem on January 24, 1950." },
+      { q: "What was the Cold War primarily about?", o: ["World War II","Korean War","Ideological conflict USA vs USSR","Gulf War"], a: "Ideological conflict USA vs USSR", hint: "It lasted 1947–1991 with no direct combat between superpowers", explanation: "The Cold War (1947–1991) was ideological: USA (capitalism) vs USSR (communism). It featured the Space Race, arms race, and proxy wars in Korea, Vietnam, and Afghanistan." },
+      { q: "The Magna Carta was signed in which year?", o: ["1066","1215","1348","1492"], a: "1215", hint: "Signed by King John of England under pressure from barons", explanation: "Magna Carta (1215) was the first document to limit royal power and establish the rule of law — a foundation of modern democracy." },
+      { q: "Who was known as the 'Iron Man of India'?", o: ["Jawaharlal Nehru","Bal Gangadhar Tilak","Sardar Vallabhbhai Patel","Bhagat Singh"], a: "Sardar Vallabhbhai Patel", hint: "He unified 562 princely states into the Indian Union", explanation: "Sardar Patel earned the title for integrating 562 princely states — a feat compared to Bismarck's unification of Germany." }
+    ]
+  },
+  geography: {
+    name: "Geography",
+    icon: "🌍",
+    color: "#00ffc8",
+    desc: "World Maps, Capitals, Nature",
+    questions: [
+      { q: "Which is the longest river in the world?", o: ["Amazon","Yangtze","Mississippi","Nile"], a: "Nile", hint: "It flows through northeastern Africa, primarily Egypt", explanation: "The Nile (6,650 km) is the longest river. However, the Amazon carries the most water volume. The measurement debate continues!" },
+      { q: "What is the capital of Australia?", o: ["Sydney","Melbourne","Brisbane","Canberra"], a: "Canberra", hint: "A purpose-built city, not the largest or most famous Australian city", explanation: "Canberra became capital in 1913, chosen as compromise between rivals Sydney and Melbourne. Designed by American architects who won an international competition." },
+      { q: "Which desert is the largest in the world?", o: ["Sahara","Arabian","Gobi","Antarctic"], a: "Antarctic", hint: "A desert is defined by low precipitation, not hot temperature!", explanation: "Antarctica is the largest desert (~14.2 million km²)! Deserts are defined by less than 250mm of annual precipitation — Antarctica averages only 50mm." },
+      { q: "Mount Everest is on the border of which two countries?", o: ["India & Nepal","Nepal & China","China & Bhutan","India & China"], a: "Nepal & China", hint: "It sits at the Tibet Autonomous Region boundary", explanation: "Everest (8,848.86m) straddles Nepal and China. First summited by Tenzing Norgay and Edmund Hillary on May 29, 1953." },
+      { q: "Which country has the most natural lakes?", o: ["Russia","USA","Brazil","Canada"], a: "Canada", hint: "This country contains about 60% of the world's lakes", explanation: "Canada has ~2 million lakes covering about 9% of its land area. The Great Lakes contain 21% of the world's fresh surface water." },
+      { q: "The Mariana Trench is located in which ocean?", o: ["Atlantic Ocean","Indian Ocean","Arctic Ocean","Pacific Ocean"], a: "Pacific Ocean", hint: "Near the Mariana Islands in the western region", explanation: "Challenger Deep (~11,034m) is in the Pacific near Guam. That's deeper than Everest is tall! Only 3 people have reached the bottom." },
+      { q: "Which African country has the highest population?", o: ["Ethiopia","South Africa","Egypt","Nigeria"], a: "Nigeria", hint: "Sometimes called the 'Giant of Africa', located in West Africa", explanation: "Nigeria has ~220 million people, making it Africa's most populous nation and 7th most populous worldwide. Lagos is one of the fastest-growing megacities." },
+      { q: "Through how many countries does the Amazon River flow?", o: ["3","6","9","12"], a: "9", hint: "Mainly through Brazil but touches several neighbors", explanation: "The Amazon flows through 9 South American countries including Brazil, Peru, Colombia. It contains 20% of the world's fresh river water!" }
+    ]
+  },
+  computer: {
+    name: "Computer Science",
+    icon: "💻",
+    color: "#c77dff",
+    desc: "Programming, Algorithms, Tech",
+    questions: [
+      { q: "What does HTML stand for?", o: ["HyperText Markup Language","High Transfer Markup Language","HyperText Machine Language","Hyperlink Text Markup Language"], a: "HyperText Markup Language", hint: "'H' refers to hyperlinks, 'M' is for markup — the structure of web pages", explanation: "HTML is the standard language for web pages. 'HyperText' = text with links. 'Markup' = using tags like <p>, <h1> to structure content. Created by Tim Berners-Lee in 1991." },
+      { q: "Binary representation of decimal number 13?", o: ["1011","1101","1010","1110"], a: "1101", hint: "13 = 8 + 4 + 1 = 2³ + 2² + 2⁰", explanation: "13÷2=6 R1, 6÷2=3 R0, 3÷2=1 R1, 1÷2=0 R1. Reading remainders bottom-up: 1101. Verify: 1×8+1×4+0×2+1×1 = 13 ✓" },
+      { q: "Which data structure works on LIFO principle?", o: ["Queue","Stack","Linked List","Tree"], a: "Stack", hint: "Think of a stack of plates — always add/remove from the top", explanation: "A Stack follows LIFO: the last element pushed is the first popped. Real examples: browser back button, undo in editors, function call management." },
+      { q: "Who is known as the 'Father of the Internet'?", o: ["Tim Berners-Lee","Bill Gates","Vint Cerf","Dennis Ritchie"], a: "Vint Cerf", hint: "He co-created TCP/IP protocols that power the internet", explanation: "Vint Cerf (with Bob Kahn) designed TCP/IP in 1974. Tim Berners-Lee invented the World Wide Web (WWW) in 1989, which runs ON TOP of the internet." },
+      { q: "What is a 'deadlock' in operating systems?", o: ["CPU overheats","Two processes wait for each other indefinitely","RAM is full","A program crashes"], a: "Two processes wait for each other indefinitely", hint: "Imagine two people each holding one key the other needs", explanation: "Deadlock: 2+ processes hold a resource and wait for the other's — circular dependency. Four conditions: Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait." },
+      { q: "What does SQL stand for?", o: ["Structured Query Language","Simple Query Language","Sequential Query Language","Standard Query Logic"], a: "Structured Query Language", hint: "Used to manage and manipulate relational databases", explanation: "SQL interacts with relational databases. Core commands: SELECT, INSERT, UPDATE, DELETE, CREATE. Invented by IBM in the 1970s." },
+      { q: "What does 'encapsulation' mean in OOP?", o: ["Inheriting from parent class","Wrapping data and methods in a single unit","Creating multiple instances","Hiding implementation only"], a: "Wrapping data and methods in a single unit", hint: "Think of a capsule that contains everything inside it", explanation: "Encapsulation bundles data (attributes) and methods (functions) inside a class, controlling access via public/private/protected modifiers. A core OOP pillar." },
+      { q: "What is the time complexity of binary search?", o: ["O(n)","O(n²)","O(log n)","O(n log n)"], a: "O(log n)", hint: "Each step eliminates HALF of the remaining elements", explanation: "Binary search: O(log n) because each comparison halves the search space. With 1 million elements, it takes just ~20 comparisons vs 1,000,000 for linear search!" }
+    ]
+  },
+  english: {
+    name: "English",
+    icon: "📝",
+    color: "#ff006e",
+    desc: "Grammar, Literature, Vocabulary",
+    questions: [
+      { q: "Choose the correct synonym for 'Eloquent':", o: ["Silent","Articulate","Confused","Ignorant"], a: "Articulate", hint: "An eloquent speaker expresses ideas fluently and persuasively", explanation: "'Eloquent' means having fluent, forceful, appropriate speech. Synonyms: articulate, silver-tongued, persuasive. Antonyms: inarticulate, tongue-tied." },
+      { q: "Identify the figure of speech: 'The moon was a silver coin in the sky.'", o: ["Simile","Personification","Metaphor","Hyperbole"], a: "Metaphor", hint: "It directly states one thing IS another — no 'like' or 'as' used", explanation: "A Metaphor directly compares two unlike things (moon = silver coin). A Simile would use 'like' or 'as'. This emphasizes the moon's round, shiny, small appearance." },
+      { q: "What is the plural of 'phenomenon'?", o: ["Phenomenons","Phenomenas","Phenomena","Phenomenon"], a: "Phenomena", hint: "From Greek, follows an irregular Greek plural rule", explanation: "'Phenomena' from Greek 'phainomenon'. Similarly: criterion→criteria, datum→data, medium→media. 'Phenomena' remains the standard plural." },
+      { q: "Which uses the subjunctive mood correctly?", o: ["If I was rich, I will travel.","If I were rich, I would travel.","If I am rich, I would travel.","If I were rich, I will travel."], a: "If I were rich, I would travel.", hint: "Subjunctive expresses hypothetical or contrary-to-fact conditions", explanation: "Subjunctive uses 'were' (not 'was') for hypotheticals. Pattern: If + past subjunctive (were), + would + infinitive. 'Was' = real past; 'were' = unreal/wishful." },
+      { q: "What is the antonym of 'Loquacious'?", o: ["Talkative","Verbose","Reticent","Garrulous"], a: "Reticent", hint: "Loquacious = very talkative; its opposite speaks very little", explanation: "'Loquacious' = excessively talkative (Latin: loqui = to speak). Antonym 'Reticent' = not revealing thoughts. Garrulous and Verbose are synonyms of loquacious." },
+      { q: "In 'She gave him a book', what is 'him'?", o: ["Direct Object","Subject","Indirect Object","Predicate"], a: "Indirect Object", hint: "Direct object = what was given; indirect object = WHO received it", explanation: "'She gave him a book': Subject=She, Verb=gave, Direct Object=book, Indirect Object=him. Indirect objects answer 'to whom?' or 'for whom?'" },
+      { q: "Choose the correctly spelled word:", o: ["Accomodate","Accommodate","Acommodate","Acomodate"], a: "Accommodate", hint: "Double 'c' AND double 'm' — it accommodates both!", explanation: "'Accommodate' has double 'c' and double 'm'. Memory trick: it's large enough to accommodate two c's and two m's! A very commonly misspelled word." },
+      { q: "What literary device is: 'Peter Piper picked a peck of pickled peppers'?", o: ["Assonance","Onomatopoeia","Alliteration","Consonance"], a: "Alliteration", hint: "Listen to the repeating sound at the BEGINNING of words", explanation: "Alliteration = repetition of the same consonant sound at the start of nearby words (P-P-P-P). Assonance = vowel repetition. Onomatopoeia = words that sound like what they describe." }
+    ]
+  },
+  gk: {
+    name: "General Knowledge",
+    icon: "🌐",
+    color: "#ffd700",
+    desc: "World Affairs & Trivia",
+    questions: [
+      { q: "Which country has the most UNESCO World Heritage Sites?", o: ["China","Italy","France","India"], a: "Italy", hint: "This country gave the world the Renaissance and the Roman Empire", explanation: "Italy has 58 UNESCO World Heritage Sites, the most of any country, including the Colosseum, Venice, and Pompeii. China is second with 57." },
+      { q: "How many bones does an adult human body have?", o: ["196","206","216","226"], a: "206", hint: "Babies are born with about 270-300 bones that fuse over time", explanation: "Adults have exactly 206 bones. Babies have ~270-300 that fuse during childhood. The smallest is the stapes in the ear (3mm); the largest is the femur." },
+      { q: "In which sport is the 'Duckworth-Lewis-Stern method' used?", o: ["Football","Cricket","Tennis","Basketball"], a: "Cricket", hint: "It's used when rain interrupts a limited-overs match", explanation: "The DLS method recalculates target scores in rain-interrupted cricket using statistics considering wickets and overs remaining. Developed by Duckworth and Lewis in 1997." },
+      { q: "Which gas makes up the most of Earth's atmosphere?", o: ["Oxygen","Carbon Dioxide","Hydrogen","Nitrogen"], a: "Nitrogen", hint: "Not the gas we need to breathe — that's only about 21% of the atmosphere", explanation: "Earth's atmosphere: ~78% Nitrogen, ~21% Oxygen, ~1% Argon, ~0.04% CO₂. Nitrogen is relatively inert and dilutes oxygen to a safe level." },
+      { q: "Who invented the telephone?", o: ["Thomas Edison","Nikola Tesla","Alexander Graham Bell","James Watt"], a: "Alexander Graham Bell", hint: "Made the first call to his assistant Thomas Watson in 1876", explanation: "Bell patented the telephone in 1876. First words: 'Mr. Watson, come here — I want to see you.' However, Antonio Meucci created a similar device earlier but lacked funds to patent it." },
+      { q: "National currency of Japan?", o: ["Yuan","Won","Ringgit","Yen"], a: "Yen", hint: "Its symbol is ¥ — shared with Chinese currency but different", explanation: "Japan's currency is the Yen (¥, JPY). Japan's ¥1 coin is the only coin in the world made of pure aluminum." },
+      { q: "Which planet is known as the 'Red Planet'?", o: ["Jupiter","Venus","Saturn","Mars"], a: "Mars", hint: "Its reddish color comes from iron oxide (rust) on its surface", explanation: "Mars appears red due to iron oxide. It has the solar system's largest volcano (Olympus Mons, 3× taller than Everest) and a 24h37m day — closest to Earth's!" },
+      { q: "The 2024 Summer Olympics were held in which city?", o: ["Los Angeles","Tokyo","Paris","Brisbane"], a: "Paris", hint: "France hosted the Olympics 100 years after it last hosted in 1924", explanation: "Paris 2024 (July 26–Aug 11) was landmark: breakdancing debuted, the Seine River was used for events, and the opening ceremony was on the river — a first in Olympic history!" }
+    ]
+  },
+  arts: {
+    name: "Arts & Culture",
+    icon: "🎨",
+    color: "#ff6b6b",
+    desc: "Art, Music, Literature",
+    questions: [
+      { q: "Who painted the 'Starry Night'?", o: ["Pablo Picasso","Claude Monet","Vincent van Gogh","Salvador Dalí"], a: "Vincent van Gogh", hint: "Painted from his room in an asylum in Saint-Rémy-de-Provence", explanation: "'The Starry Night' (1889) was painted by Van Gogh while voluntarily at the Saint-Paul asylum. He made 900+ paintings but sold only one. Now at MoMA, New York." },
+      { q: "How many semitones are in an octave in music?", o: ["8","10","12","7"], a: "12", hint: "Count all piano keys (white + black) between two same-named notes", explanation: "An octave = 12 semitones: 7 white + 5 black keys. 'Octave' comes from Latin for 8 (counting only white keys), but with all half-steps you get 12." },
+      { q: "Which Shakespeare play features 'Shylock'?", o: ["Othello","Hamlet","The Merchant of Venice","Macbeth"], a: "The Merchant of Venice", hint: "Shylock is a moneylender demanding a 'pound of flesh'", explanation: "Shylock appears in 'The Merchant of Venice' (~1596-1599). The famous 'Hath not a Jew eyes?' speech is his — one of Shakespeare's most complex characters." },
+      { q: "Which Indian classical dance originated in Tamil Nadu?", o: ["Kathak","Odissi","Bharatanatyam","Kuchipudi"], a: "Bharatanatyam", hint: "One of the oldest dance forms, originally performed in temples", explanation: "Bharatanatyam is from Tamil Nadu, rooted in temple dance (Devadasi tradition). It follows the Natya Shastra combining nritta, nritya, and natya." },
+      { q: "What does 'Da Capo' mean in music?", o: ["From the top","Slow down","The end","Play softly"], a: "From the top", hint: "Abbreviated as 'D.C.' on sheet music", explanation: "'Da Capo' is Italian for 'from the head/top' — repeat from the beginning. 'Da Capo al Fine' = repeat until 'Fine' (the end). Italian is the universal music notation language." },
+      { q: "Who designed the Guggenheim Museum Bilbao?", o: ["Zaha Hadid","Frank Gehry","Renzo Piano","Norman Foster"], a: "Frank Gehry", hint: "Famous for its spectacular titanium-clad, deconstructivist exterior", explanation: "Frank Gehry designed Guggenheim Bilbao (1997), designed using CATIA software originally for aircraft. It revitalized Bilbao's economy — called the 'Bilbao Effect'." },
+      { q: "Homer's 'The Iliad' is primarily about which war?", o: ["Persian War","Peloponnesian War","Trojan War","Macedonian War"], a: "Trojan War", hint: "Involves a famous wooden horse and the city of Troy", explanation: "The Iliad (~8th century BCE) narrates the siege of Troy. Focuses on Achilles' anger. The Odyssey is the sequel. The Trojan Horse actually appears in Virgil's Aeneid!" },
+      { q: "Traditional Japanese art of paper folding?", o: ["Ikebana","Bonsai","Origami","Kabuki"], a: "Origami", hint: "Ori = folding, Kami = paper in Japanese", explanation: "Origami (折り紙) = 'ori' (folding) + 'kami' (paper). The crane (tsuru) is most iconic — legend says folding 1000 cranes grants a wish (senbazuru)!" }
+    ]
+  }
+};
+
+/* ─── Starfield ───────────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    stars = Array.from({length: 180}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.4 + 0.3,
+      alpha: Math.random() * 0.7 + 0.2,
+      speed: Math.random() * 0.3 + 0.05,
+      phase: Math.random() * Math.PI * 2
+    }));
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+      s.phase += s.speed * 0.015;
+      const a = s.alpha * (0.6 + 0.4 * Math.sin(s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,220,255,${a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  resize();
+  requestAnimationFrame(draw);
+  window.addEventListener('resize', resize);
+})();
+
+/* ─── Subject Grid Build ──────────────────────────────── */
+(function buildSubjects() {
+  const grid = document.getElementById('subjects-grid');
+  Object.keys(QUIZ_DATA).forEach((key, i) => {
+    const sub = QUIZ_DATA[key];
+    const card = document.createElement('div');
+    card.className = 'subject-card';
+    card.style.cssText = `--color: ${sub.color}; animation: fade-up 0.6s ease ${0.1 + i*0.07}s both;`;
+    card.innerHTML = `
+      <span class="card-icon">${sub.icon}</span>
+      <div class="card-name">${sub.name}</div>
+      <div class="card-desc">${sub.desc}</div>
+      <div class="card-count">${sub.questions.length} Questions</div>
+    `;
+    card.onclick = () => startQuiz(key);
+    grid.appendChild(card);
+  });
+})();
+
+/* ─── Quiz State ──────────────────────────────────────── */
+let state = {
+  subjectKey: null,
+  questions: [],
+  currentIdx: 0,
+  score: 0,
+  streak: 0,
+  bestStreak: 0,
+  answered: false,
+  timer: null,
+  timeLeft: 30,
+  timeTotal: 30,
+  timings: [],
+  hintOpen: false,
+  explainOpen: false,
+  correct: 0,
+  wrong: 0
+};
+
+const LETTERS = ['A','B','C','D'];
+
+/* ─── Start Quiz ──────────────────────────────────────── */
+function startQuiz(key) {
+  const sub = QUIZ_DATA[key];
+  state = {
+    subjectKey: key,
+    questions: [...sub.questions].sort(() => Math.random() - 0.5),
+    currentIdx: 0,
+    score: 0,
+    streak: 0,
+    bestStreak: 0,
+    answered: false,
+    timer: null,
+    timeLeft: 30,
+    timeTotal: 30,
+    timings: [],
+    hintOpen: false,
+    explainOpen: false,
+    correct: 0,
+    wrong: 0
+  };
+
+  // Apply subject color to quiz screen
+  document.getElementById('quiz-screen').style.setProperty('--color', sub.color);
+  document.getElementById('progress-fill').style.setProperty('--color', sub.color);
+  document.getElementById('btn-next').style.setProperty('--color', sub.color);
+  document.getElementById('quiz-badge').textContent = `${sub.icon} ${sub.name}`;
+  document.getElementById('quiz-badge').style.setProperty('--color', sub.color);
+
+  showScreen('quiz-screen');
+  loadQuestion();
+}
+
+/* ─── Load Question ───────────────────────────────────── */
+function loadQuestion() {
+  const q = state.questions[state.currentIdx];
+  state.answered = false;
+  state.hintOpen = false;
+  state.explainOpen = false;
+  state.timeLeft = state.timeTotal;
+
+  // Animate card
+  const card = document.getElementById('question-card');
+  card.style.animation = 'none';
+  card.offsetHeight; // reflow
+  card.style.animation = 'card-in 0.5s cubic-bezier(0.4,0,0.2,1) both';
+
+  // Question
+  document.getElementById('q-number').textContent = `QUESTION ${String(state.currentIdx+1).padStart(2,'0')}`;
+  document.getElementById('question-text').textContent = q.q;
+  document.getElementById('hint-text').textContent = q.hint;
+  document.getElementById('score-val').textContent = state.score;
+
+  // Hint reset
+  document.getElementById('hint-content').classList.remove('open');
+  document.getElementById('hint-btn').innerHTML = '💡 Need a Hint?';
+  document.getElementById('hint-btn').disabled = false;
+
+  // Progress
+  const pct = (state.currentIdx / state.questions.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('q-counter').textContent = `Question ${state.currentIdx+1} of ${state.questions.length}`;
+  document.getElementById('streak-info').textContent = state.streak > 1 ? `🔥 ${state.streak} streak` : '';
+
+  // Streak badge
+  const badge = document.getElementById('streak-badge');
+  if (state.streak >= 3) {
+    badge.textContent = `🔥 ${state.streak}x Streak!`;
+    badge.classList.add('visible');
+  } else {
+    badge.classList.remove('visible');
+  }
+
+  // Options
+  const opts = document.getElementById('options-grid');
+  opts.innerHTML = '';
+  const shuffled = [...q.o].sort(() => Math.random() - 0.5);
+  shuffled.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.setAttribute('data-letter', LETTERS[i]);
+    btn.innerHTML = `<span>${opt}</span><span class="option-icon"></span>`;
+    btn.onclick = () => selectAnswer(opt, btn, q.a, q.explanation);
+    opts.appendChild(btn);
+  });
+
+  // Feedback reset
+  const fp = document.getElementById('feedback-panel');
+  fp.classList.remove('open');
+  document.getElementById('feedback-header').innerHTML = '';
+  document.getElementById('explanation-body').classList.remove('open');
+  document.getElementById('explain-btn').classList.remove('open');
+
+  // Next btn
+  const nxt = document.getElementById('btn-next');
+  nxt.classList.remove('visible');
+  nxt.textContent = state.currentIdx < state.questions.length - 1
+    ? 'Next Question →'
+    : '🏁 See Results';
+
+  // Timer
+  startTimer();
+}
+
+/* ─── Timer ───────────────────────────────────────────── */
+function startTimer() {
+  clearInterval(state.timer);
+  updateTimerUI();
+  state.timer = setInterval(() => {
+    state.timeLeft--;
+    updateTimerUI();
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timer);
+      if (!state.answered) autoFail();
+    }
+  }, 1000);
+}
+
+function updateTimerUI() {
+  const pct = (state.timeLeft / state.timeTotal) * 100;
+  const bar = document.getElementById('timer-bar');
+  const lbl = document.getElementById('timer-label');
+  bar.style.width = pct + '%';
+  const color = pct > 50 ? '#39ff14' : pct > 25 ? '#ffd700' : '#ff4466';
+  bar.style.background = color;
+  lbl.style.color = color;
+  lbl.textContent = state.timeLeft;
+}
+
+function autoFail() {
+  state.answered = true;
+  state.timings.push(0);
+  state.streak = 0;
+  state.wrong++;
+  const q = state.questions[state.currentIdx];
+  // Mark correct option
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.disabled = true;
+    const text = btn.querySelector('span').textContent;
+    if (text === q.a) {
+      btn.classList.add('correct');
+      btn.querySelector('.option-icon').textContent = '✓';
+    }
+  });
+  showFeedback(false, q.explanation);
+}
+
+/* ─── Select Answer ───────────────────────────────────── */
+function selectAnswer(selected, btn, correct, explanation) {
+  if (state.answered) return;
+  state.answered = true;
+  clearInterval(state.timer);
+  const timeUsed = state.timeTotal - state.timeLeft;
+  state.timings.push(timeUsed);
+
+  const isCorrect = selected === correct;
+  document.querySelectorAll('.option-btn').forEach(b => {
+    b.disabled = true;
+    const text = b.querySelector('span').textContent;
+    if (text === correct) {
+      b.classList.add('correct');
+      b.querySelector('.option-icon').textContent = '✓';
+    }
+  });
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    state.streak++;
+    state.bestStreak = Math.max(state.bestStreak, state.streak);
+    const bonus = Math.min(state.streak - 1, 3);
+    const pts = 10 + (bonus * 5) + Math.floor(state.timeLeft * 0.5);
+    state.score += pts;
+    state.correct++;
+    document.getElementById('score-val').textContent = state.score;
+    if (state.streak >= 2) pulseScore();
+  } else {
+    btn.classList.add('wrong');
+    btn.querySelector('.option-icon').textContent = '✗';
+    state.streak = 0;
+    state.wrong++;
+  }
+
+  showFeedback(isCorrect, explanation);
+}
+
+function pulseScore() {
+  const el = document.getElementById('score-val');
+  el.style.transform = 'scale(1.4)';
+  el.style.transition = 'transform 0.2s';
+  setTimeout(() => { el.style.transform = 'scale(1)'; }, 200);
+}
+
+/* ─── Feedback ────────────────────────────────────────── */
+function showFeedback(isCorrect, explanation) {
+  const panel = document.getElementById('feedback-panel');
+  const header = document.getElementById('feedback-header');
+  document.getElementById('explanation-text').textContent = explanation;
+
+  if (isCorrect) {
+    header.className = 'feedback-header correct';
+    header.innerHTML = `<span>✅</span> ${state.streak >= 3 ? '🔥 BLAZING! +' + (10 + Math.min(state.streak-1,3)*5) + ' pts' : 'Correct! Well done!'}`;
+  } else {
+    header.className = 'feedback-header wrong';
+    header.innerHTML = `<span>❌</span> Incorrect — check the explanation!`;
+  }
+
+  panel.classList.add('open');
+  document.getElementById('btn-next').classList.add('visible');
+}
+
+/* ─── Toggle Hint ─────────────────────────────────────── */
+function toggleHint() {
+  if (state.answered) return;
+  state.hintOpen = !state.hintOpen;
+  document.getElementById('hint-content').classList.toggle('open', state.hintOpen);
+  document.getElementById('hint-btn').innerHTML = state.hintOpen ? '💡 Hide Hint' : '💡 Need a Hint?';
+}
+
+/* ─── Toggle Explanation ──────────────────────────────── */
+function toggleExplanation() {
+  state.explainOpen = !state.explainOpen;
+  document.getElementById('explanation-body').classList.toggle('open', state.explainOpen);
+  document.getElementById('explain-btn').classList.toggle('open', state.explainOpen);
+  document.getElementById('explain-btn').querySelector('span:first-child').textContent =
+    state.explainOpen ? '📖 Hide Explanation' : '📖 See Explanation';
+}
+
+/* ─── Next Question ───────────────────────────────────── */
+function nextQuestion() {
+  state.currentIdx++;
+  if (state.currentIdx >= state.questions.length) {
+    showResults();
+  } else {
+    loadQuestion();
+  }
+}
+
+/* ─── Results ─────────────────────────────────────────── */
+function showResults() {
+  const sub = QUIZ_DATA[state.subjectKey];
+  const total = state.questions.length;
+  const maxScore = total * 20;
+  const pct = Math.min(100, Math.round((state.score / maxScore) * 100));
+  const avgTime = state.timings.length
+    ? Math.round(state.timings.reduce((a,b)=>a+b,0) / state.timings.length)
+    : 0;
+
+  document.getElementById('stat-correct').textContent = state.correct;
+  document.getElementById('stat-wrong').textContent = state.wrong;
+  document.getElementById('stat-streak').textContent = state.bestStreak;
+  document.getElementById('stat-time').textContent = avgTime + 's';
+
+  const color = pct >= 80 ? '#39ff14' : pct >= 50 ? '#ffd700' : '#ff4466';
+  document.getElementById('result-num').style.color = color;
+  document.getElementById('result-num').textContent = state.score;
+  document.getElementById('result-ring-fill').style.stroke = color;
+
+  let grade, msg;
+  if (pct >= 90) { grade = '🏆 LEGENDARY'; msg = `Absolutely stellar! You dominated ${sub.name} like a true master.`; }
+  else if (pct >= 75) { grade = '⭐ BRILLIANT'; msg = `Outstanding performance! Your knowledge is impressive.`; }
+  else if (pct >= 60) { grade = '💡 SMART'; msg = `Good job! You clearly know your stuff. A little revision and you'll be legendary.`; }
+  else if (pct >= 40) { grade = '📚 KEEP GOING'; msg = `You're getting there! Review the explanations and try again.`; }
+  else { grade = '🌱 BEGINNER'; msg = `Don't give up — every expert was once a beginner. Review and retry!`; }
+
+  document.getElementById('result-grade').textContent = grade;
+  document.getElementById('result-grade').style.color = color;
+  document.getElementById('result-msg').textContent = msg;
+
+  showScreen('result-screen');
+
+  // Animate ring
+  setTimeout(() => {
+    const circumference = 2 * Math.PI * 70; // r=70
+    const dashOffset = circumference - (pct / 100) * circumference;
+    document.getElementById('result-ring-fill').style.strokeDashoffset = dashOffset;
+  }, 100);
+
+  // Animate number
+  animateNumber(document.getElementById('result-num'), 0, state.score, 1400);
+
+  if (pct >= 70) launchConfetti(color);
+}
+
+function animateNumber(el, from, to, duration) {
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.round(from + (to - from) * easeOut(p));
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+/* ─── Confetti ────────────────────────────────────────── */
+function launchConfetti(mainColor) {
+  const colors = [mainColor, '#00d4ff', '#ffd700', '#ff006e', '#39ff14', '#c77dff'];
+  for (let i = 0; i < 80; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `
+      left: ${Math.random() * 100}vw;
+      top: -20px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      width: ${Math.random() * 8 + 5}px;
+      height: ${Math.random() * 8 + 5}px;
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+      animation-duration: ${Math.random() * 2 + 2}s;
+      animation-delay: ${Math.random() * 1.5}s;
+    `;
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+}
+
+/* ─── Navigation ──────────────────────────────────────── */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  clearInterval(state.timer);
+  showScreen('home-screen');
+}
+
+function restartQuiz() {
+  startQuiz(state.subjectKey);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+[
+  {
+    "q": "Who painted the 'Starry Night'?",
+    "o": ["Pablo Picasso", "Claude Monet", "Vincent van Gogh", "Salvador Dalí"],
+    "a": "Vincent van Gogh",
+    "hint": "He painted it from his room in an asylum in Saint-Rémy-de-Provence, France",
+    "explanation": "'The Starry Night' (1889) was painted by Van Gogh while he was voluntarily at the Saint-Paul-de-Mausole asylum. He made over 900 paintings in his lifetime but sold only one. Now at MoMA, New York."
+  },
+  {
+    "q": "In music, how many semitones are in an octave?",
+    "o": ["8", "10", "12", "7"],
+    "a": "12",
+    "hint": "Count all the piano keys (white + black) between two notes of the same name",
+    "explanation": "An octave contains 12 semitones (half-steps): 7 white keys + 5 black keys on a piano. The word 'octave' comes from Latin for 8, counting only white keys — but including all half-steps gives you 12."
+  },
+  {
+    "q": "Which Shakespeare play features the character 'Shylock'?",
+    "o": ["Othello", "Hamlet", "The Merchant of Venice", "Macbeth"],
+    "a": "The Merchant of Venice",
+    "hint": "Shylock is a moneylender who demands a 'pound of flesh' as collateral",
+    "explanation": "Shylock appears in 'The Merchant of Venice' (~1596-1599). He's one of Shakespeare's most complex characters — a Jewish moneylender demanding a pound of flesh from Antonio. The famous 'Hath not a Jew eyes?' speech is his."
+  },
+  {
+    "q": "Which Indian classical dance form originated in Tamil Nadu?",
+    "o": ["Kathak", "Odissi", "Bharatanatyam", "Kuchipudi"],
+    "a": "Bharatanatyam",
+    "hint": "It's one of the oldest classical dance forms, originally performed in temples",
+    "explanation": "Bharatanatyam is from Tamil Nadu, with roots in temple dance (Devadasi tradition). It follows the Natya Shastra and combines nritta (pure dance), nritya (expressive), and natya (drama). It was formalized in its current form in the 20th century."
+  },
+  {
+    "q": "What does 'Da Capo' mean in music terminology?",
+    "o": ["From the top", "Slow down", "The end", "Play softly"],
+    "a": "From the top",
+    "hint": "It's abbreviated as 'D.C.' on sheet music",
+    "explanation": "'Da Capo' is Italian for 'from the head/top' — it instructs the performer to go back and repeat from the beginning. 'Da Capo al Fine' means repeat from the beginning until 'Fine' (the end). Italian is the universal language of music notation."
+  },
+  {
+    "q": "Which architect designed the Guggenheim Museum Bilbao?",
+    "o": ["Zaha Hadid", "Frank Gehry", "Renzo Piano", "Norman Foster"],
+    "a": "Frank Gehry",
+    "hint": "The museum is famous for its spectacular titanium-clad, deconstructivist exterior",
+    "explanation": "Frank Gehry designed the Guggenheim Bilbao (1997), considered one of the greatest buildings of the 20th century. Its titanium curves were designed using CATIA software (originally for aircraft). It single-handedly revitalized Bilbao's economy — called the 'Bilbao Effect'."
+  },
+  {
+    "q": "The ancient Greek epic 'The Iliad' is primarily about which war?",
+    "o": ["Persian War", "Peloponnesian War", "Trojan War", "Macedonian War"],
+    "a": "Trojan War",
+    "hint": "The story involves a famous wooden horse and the city of Troy",
+    "explanation": "Homer's Iliad (~8th century BCE) narrates the siege of Troy (Ilium). It focuses on Achilles' anger during the 10-year Trojan War. The Odyssey is the sequel, following Odysseus' journey home. The Trojan Horse appears in Virgil's Aeneid, not the Iliad!"
+  },
+  {
+    "q": "What is the traditional Japanese art of paper folding called?",
+    "o": ["Ikebana", "Bonsai", "Origami", "Kabuki"],
+    "a": "Origami",
+    "hint": "Ori = folding, Kami = paper in Japanese",
+    "explanation": "Origami (折り紙) comes from 'ori' (folding) + 'kami' (paper). It became popular in Japan after paper became widely available (~17th century). The crane (tsuru) is the most iconic origami figure — legend says folding 1000 cranes grants a wish!"
+  }
+]

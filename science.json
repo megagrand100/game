@@ -1,0 +1,58 @@
+[
+  {
+    "q": "Which gas do plants absorb during photosynthesis?",
+    "o": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    "a": "Carbon Dioxide",
+    "hint": "Plants breathe in what humans breathe out",
+    "explanation": "Plants absorb CO₂ from the atmosphere and use sunlight + water to convert it into glucose and oxygen. The equation: 6CO₂ + 6H₂O + Light → C₆H₁₂O₆ + 6O₂."
+  },
+  {
+    "q": "What is the speed of light in vacuum?",
+    "o": ["3×10⁶ m/s", "3×10⁸ m/s", "3×10¹⁰ m/s", "3×10⁴ m/s"],
+    "a": "3×10⁸ m/s",
+    "hint": "It's approximately 300,000 kilometers per second",
+    "explanation": "Light travels at ~3×10⁸ m/s (299,792,458 m/s exactly) in vacuum. This constant 'c' is the universal speed limit — nothing can travel faster!"
+  },
+  {
+    "q": "Which is the powerhouse of the cell?",
+    "o": ["Nucleus", "Ribosome", "Mitochondria", "Golgi Body"],
+    "a": "Mitochondria",
+    "hint": "It produces ATP — the energy currency of the cell",
+    "explanation": "Mitochondria produce ATP through cellular respiration. They have their own DNA, suggesting they were once independent bacteria (endosymbiotic theory)."
+  },
+  {
+    "q": "What is Newton's Second Law of Motion?",
+    "o": ["F = m/a", "F = ma", "F = m+a", "F = m²a"],
+    "a": "F = ma",
+    "hint": "Force equals mass times acceleration",
+    "explanation": "F = ma means: more mass or more acceleration requires more force. This explains why it's harder to push a heavy truck than a bicycle at the same acceleration."
+  },
+  {
+    "q": "Which planet has the most moons in our solar system?",
+    "o": ["Jupiter", "Saturn", "Uranus", "Neptune"],
+    "a": "Saturn",
+    "hint": "This ringed planet recently broke the moon record with 140+ moons",
+    "explanation": "Saturn has 146 confirmed moons (as of 2024), surpassing Jupiter's 95. Titan, Saturn's largest moon, is bigger than Mercury and has a thick atmosphere!"
+  },
+  {
+    "q": "What is the chemical symbol for Gold?",
+    "o": ["Go", "Gd", "Au", "Ag"],
+    "a": "Au",
+    "hint": "Comes from the Latin word 'Aurum'",
+    "explanation": "Au comes from 'Aurum', the Latin name for gold. Many element symbols come from Latin (Fe=Iron/Ferrum, Pb=Lead/Plumbum). Gold is element number 79."
+  },
+  {
+    "q": "Which blood group is called the 'Universal Donor'?",
+    "o": ["A+", "AB+", "O-", "B-"],
+    "a": "O-",
+    "hint": "This group lacks A, B antigens AND the Rh factor",
+    "explanation": "O- blood can be given to anyone because it lacks A antigens, B antigens, and the Rh factor — so no immune rejection occurs. AB+ is the universal recipient."
+  },
+  {
+    "q": "What phenomenon causes a rainbow to form?",
+    "o": ["Reflection", "Refraction & Dispersion", "Diffraction", "Interference"],
+    "a": "Refraction & Dispersion",
+    "hint": "White light bends and splits into its component colors",
+    "explanation": "Raindrops act as tiny prisms. Light enters, refracts (bends), reflects off the back, then refracts again as it exits — with different wavelengths bending at different angles, creating the spectrum: VIBGYOR."
+  }
+]

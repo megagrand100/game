@@ -1,0 +1,58 @@
+[
+  {
+    "q": "Which is the longest river in the world?",
+    "o": ["Amazon", "Yangtze", "Mississippi", "Nile"],
+    "a": "Nile",
+    "hint": "It flows through northeastern Africa, primarily through Egypt",
+    "explanation": "The Nile (6,650 km) is the longest river, flowing northward through 11 countries. However, the Amazon carries the most water volume. The debate on length continues due to measurement difficulties!"
+  },
+  {
+    "q": "What is the capital of Australia?",
+    "o": ["Sydney", "Melbourne", "Brisbane", "Canberra"],
+    "a": "Canberra",
+    "hint": "It's a purpose-built city, not the largest or most famous Australian city",
+    "explanation": "Canberra became the capital in 1913, chosen as a compromise between rivals Sydney and Melbourne. It was designed by American architects Walter and Marion Griffin who won an international design competition."
+  },
+  {
+    "q": "Which desert is the largest in the world?",
+    "o": ["Sahara", "Arabian", "Gobi", "Antarctic"],
+    "a": "Antarctic",
+    "hint": "A desert is defined by low precipitation, not necessarily hot temperature",
+    "explanation": "Antarctica is the largest desert (~14.2 million km²)! The Sahara is the largest HOT desert. Deserts are defined by receiving less than 250mm of precipitation annually — Antarctica averages only 50mm!"
+  },
+  {
+    "q": "Mount Everest is located on the border of which two countries?",
+    "o": ["India & Nepal", "Nepal & China", "China & Bhutan", "India & China"],
+    "a": "Nepal & China",
+    "hint": "It sits in the Himalayas at the Tibet Autonomous Region boundary",
+    "explanation": "Everest (8,848.86m) straddles Nepal and China (Tibet). Known as Sagarmatha in Nepal and Chomolungma in Tibetan. First summited by Tenzing Norgay (Nepal) and Edmund Hillary (New Zealand) on May 29, 1953."
+  },
+  {
+    "q": "Which country has the most natural lakes in the world?",
+    "o": ["Russia", "USA", "Brazil", "Canada"],
+    "a": "Canada",
+    "hint": "This country contains about 60% of the world's lakes",
+    "explanation": "Canada has approximately 2 million lakes covering about 9% of its land area — more than any other country! The Great Lakes (shared with USA) contain 21% of the world's fresh surface water."
+  },
+  {
+    "q": "The Mariana Trench, the deepest point on Earth, is located in which ocean?",
+    "o": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "a": "Pacific Ocean",
+    "hint": "It's near the Mariana Islands in the western part of this ocean",
+    "explanation": "The Mariana Trench's deepest point, Challenger Deep (~11,034m), is in the Pacific Ocean near Guam. That's deeper than Mount Everest is tall! Only 3 people have ever reached the bottom."
+  },
+  {
+    "q": "Which African country has the highest population?",
+    "o": ["Ethiopia", "South Africa", "Egypt", "Nigeria"],
+    "a": "Nigeria",
+    "hint": "It's sometimes called the 'Giant of Africa' and is located in West Africa",
+    "explanation": "Nigeria has ~220 million people, making it Africa's most populous nation and the 7th most populous worldwide. Lagos is its largest city and one of the fastest-growing megacities in the world."
+  },
+  {
+    "q": "Through how many countries does the Amazon River flow?",
+    "o": ["3", "6", "9", "12"],
+    "a": "9",
+    "hint": "It mainly flows through Brazil but touches several neighboring countries",
+    "explanation": "The Amazon flows through 9 South American countries: Brazil (majority), Peru, Colombia, Bolivia, Ecuador, Venezuela, Guyana, Suriname, and French Guiana. It contains 20% of the world's fresh river water!"
+  }
+]
