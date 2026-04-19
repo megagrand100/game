@@ -1,58 +1,52 @@
-[
-  {
-    "q": "Which country has the most UNESCO World Heritage Sites?",
-    "o": ["China", "Italy", "France", "India"],
-    "a": "Italy",
-    "hint": "This country gave the world the Renaissance, Roman Empire, and priceless art",
-    "explanation": "Italy has 58 UNESCO World Heritage Sites (as of 2023), the most of any country, including the Colosseum, Venice, Pompeii, and the Amalfi Coast. China is second with 57. India has 42."
-  },
-  {
-    "q": "How many bones does an adult human body have?",
-    "o": ["196", "206", "216", "226"],
-    "a": "206",
-    "hint": "Babies are born with about 270-300 bones that fuse over time",
-    "explanation": "Adults have exactly 206 bones. Babies are born with ~270-300 bones; many fuse together during childhood. The smallest bone is the stapes in the ear (3mm); the largest is the femur (thigh bone)."
-  },
-  {
-    "q": "In which sport is the 'Duckworth-Lewis-Stern method' used?",
-    "o": ["Football", "Cricket", "Tennis", "Basketball"],
-    "a": "Cricket",
-    "hint": "It's used when rain interrupts a limited-overs match",
-    "explanation": "The DLS method recalculates target scores in rain-interrupted cricket matches using a statistical formula that considers wickets lost and overs remaining. Developed by statisticians Frank Duckworth and Tony Lewis (1997)."
-  },
-  {
-    "q": "Which gas makes up the most of Earth's atmosphere?",
-    "o": ["Oxygen", "Carbon Dioxide", "Hydrogen", "Nitrogen"],
-    "a": "Nitrogen",
-    "hint": "It's not the gas we need to breathe — that's only about 21% of the atmosphere",
-    "explanation": "Earth's atmosphere: ~78% Nitrogen (N₂), ~21% Oxygen (O₂), ~1% Argon, ~0.04% CO₂. Although we breathe oxygen, nitrogen is far more abundant — it's relatively inert and dilutes the oxygen to a safe level."
-  },
-  {
-    "q": "Who invented the telephone?",
-    "o": ["Thomas Edison", "Nikola Tesla", "Alexander Graham Bell", "James Watt"],
-    "a": "Alexander Graham Bell",
-    "hint": "He made the first telephone call to his assistant, Thomas Watson, in 1876",
-    "explanation": "Alexander Graham Bell patented the telephone in 1876. His famous first words: 'Mr. Watson, come here — I want to see you.' However, Italian inventor Antonio Meucci had created a similar device earlier but lacked funds to patent it."
-  },
-  {
-    "q": "What is the national currency of Japan?",
-    "o": ["Yuan", "Won", "Ringgit", "Yen"],
-    "a": "Yen",
-    "hint": "Its symbol is ¥ — same symbol shared with Chinese currency",
-    "explanation": "Japan's currency is the Yen (¥, JPY). China uses Yuan (¥, CNY) — both share the ¥ symbol but are different currencies. Japan's ¥1 coin is the only coin in the world made of pure aluminum."
-  },
-  {
-    "q": "Which planet is known as the 'Red Planet'?",
-    "o": ["Jupiter", "Venus", "Saturn", "Mars"],
-    "a": "Mars",
-    "hint": "Its reddish color comes from iron oxide (rust) on its surface",
-    "explanation": "Mars appears red because its surface is rich in iron oxide (rust). It has the largest volcano in the solar system (Olympus Mons, 3x taller than Everest) and a 24-hour 37-minute day — closest to Earth's!"
-  },
-  {
-    "q": "The 2024 Summer Olympics were held in which city?",
-    "o": ["Los Angeles", "Tokyo", "Paris", "Brisbane"],
-    "a": "Paris",
-    "hint": "France hosted the Olympics exactly 100 years after it last hosted in 1924",
-    "explanation": "Paris 2024 (July 26 – August 11, 2024) was a landmark Olympics: breakdancing debuted, the Seine River was used for triathlon/marathon swimming, and the opening ceremony was held along the River Seine — a first in Olympic history!"
+{
+  "subject": "सामान्य ज्ञान",
+  "emoji": "🌍",
+  "categories": {
+    "इतिहास": [
+      { "q": "भारत की प्रथम महिला प्रधानमंत्री कौन थीं?", "opts": ["सरोजिनी नायडू", "इंदिरा गांधी", "विजयलक्ष्मी पंडित", "मीरा कुमार"], "ans": 1 },
+      { "q": "1857 की क्रांति का आरंभ कहाँ से हुआ?", "opts": ["मेरठ", "दिल्ली", "कानपुर", "लखनऊ"], "ans": 0 },
+      { "q": "अशोक का शासन काल कब था?", "opts": ["269-232 ईसा पूर्व", "300-250 ईसा पूर्व", "350-290 ईसा पूर्व", "400-350 ईसा पूर्व"], "ans": 0 },
+      { "q": "महात्मा गांधी का जन्म कब हुआ था?", "opts": ["2 अक्टूबर 1869", "2 अक्टूबर 1870", "15 अगस्त 1869", "26 जनवरी 1869"], "ans": 0 },
+      { "q": "भारत छोड़ो आंदोलन कब शुरू हुआ?", "opts": ["1940", "1942", "1945", "1947"], "ans": 1 },
+      { "q": "पानीपत की पहली लड़ाई कब हुई?", "opts": ["1526", "1556", "1576", "1527"], "ans": 0 },
+      { "q": "ताजमहल का निर्माण किसने करवाया?", "opts": ["अकबर", "बाबर", "शाहजहाँ", "औरंगजेब"], "ans": 2 },
+      { "q": "भारत का संविधान कब लागू हुआ?", "opts": ["15 अगस्त 1947", "26 जनवरी 1950", "26 नवंबर 1949", "2 अक्टूबर 1948"], "ans": 1 },
+      { "q": "बंगाल विभाजन कब हुआ?", "opts": ["1905", "1906", "1907", "1908"], "ans": 0 },
+      { "q": "साइमन कमीशन कब भारत आया?", "opts": ["1926", "1927", "1928", "1929"], "ans": 2 },
+      { "q": "प्रथम विश्व युद्ध कब से कब तक चला?", "opts": ["1914-1918", "1939-1945", "1905-1910", "1920-1925"], "ans": 0 },
+      { "q": "भारत में अंग्रेजों ने पहली बार कब आए?", "opts": ["1498", "1600", "1608", "1757"], "ans": 2 },
+      { "q": "जलियाँवाला बाग हत्याकांड कब हुआ?", "opts": ["1917", "1918", "1919", "1920"], "ans": 2 },
+      { "q": "दिल्ली को भारत की राजधानी कब बनाया गया?", "opts": ["1905", "1911", "1920", "1947"], "ans": 1 },
+      { "q": "स्वतंत्रता के समय भारत के प्रथम गवर्नर जनरल कौन थे?", "opts": ["माउंटबेटन", "राजगोपालाचारी", "नेहरू", "पटेल"], "ans": 0 }
+    ],
+    "भूगोल": [
+      { "q": "भारत का सबसे बड़ा राज्य (क्षेत्रफल में) कौन सा है?", "opts": ["मध्य प्रदेश", "उत्तर प्रदेश", "राजस्थान", "महाराष्ट्र"], "ans": 2 },
+      { "q": "गंगा नदी का उद्गम स्थल कौन सा है?", "opts": ["यमुनोत्री", "गंगोत्री", "केदारनाथ", "बद्रीनाथ"], "ans": 1 },
+      { "q": "भारत की सबसे लंबी नदी कौन सी है?", "opts": ["यमुना", "गंगा", "गोदावरी", "कृष्णा"], "ans": 1 },
+      { "q": "भारत का सबसे ऊँचा पर्वत शिखर कौन सा है?", "opts": ["नंदादेवी", "K2", "कंचनजंगा", "एवरेस्ट"], "ans": 2 },
+      { "q": "कर्क रेखा भारत के कितने राज्यों से गुजरती है?", "opts": ["6", "7", "8", "9"], "ans": 2 },
+      { "q": "भारत की सबसे बड़ी झील कौन सी है?", "opts": ["वूलर झील", "चिल्का झील", "डल झील", "पेरियार झील"], "ans": 1 },
+      { "q": "किस राज्य को 'मसालों का बगीचा' कहते हैं?", "opts": ["गोवा", "केरल", "कर्नाटक", "तमिलनाडु"], "ans": 1 },
+      { "q": "भारत का सबसे छोटा राज्य (क्षेत्रफल में) कौन सा है?", "opts": ["गोवा", "सिक्किम", "त्रिपुरा", "मणिपुर"], "ans": 0 },
+      { "q": "लक्षद्वीप किस सागर में स्थित है?", "opts": ["बंगाल की खाड़ी", "अरब सागर", "हिंद महासागर", "अंडमान सागर"], "ans": 1 },
+      { "q": "भारत की सबसे लंबी तटरेखा किस राज्य की है?", "opts": ["महाराष्ट्र", "गुजरात", "आंध्र प्रदेश", "तमिलनाडु"], "ans": 1 }
+    ],
+    "राजनीति": [
+      { "q": "भारत के पहले राष्ट्रपति कौन थे?", "opts": ["जवाहरलाल नेहरू", "सर्वपल्ली राधाकृष्णन", "राजेंद्र प्रसाद", "वल्लभभाई पटेल"], "ans": 2 },
+      { "q": "लोकसभा में कुल कितनी सीटें हैं?", "opts": ["543", "544", "545", "550"], "ans": 2 },
+      { "q": "भारत में राज्यसभा के सदस्यों का कार्यकाल कितने वर्षों का होता है?", "opts": ["4", "5", "6", "7"], "ans": 2 },
+      { "q": "भारत के प्रधानमंत्री की नियुक्ति कौन करता है?", "opts": ["लोकसभा अध्यक्ष", "राष्ट्रपति", "उपराष्ट्रपति", "सुप्रीम कोर्ट"], "ans": 1 },
+      { "q": "भारत के संविधान में मूल रूप से कितनी अनुसूचियाँ थीं?", "opts": ["7", "8", "9", "12"], "ans": 1 },
+      { "q": "संसद का निम्न सदन किसे कहते हैं?", "opts": ["राज्यसभा", "लोकसभा", "विधानसभा", "विधान परिषद"], "ans": 1 },
+      { "q": "भारत के मुख्य न्यायाधीश की नियुक्ति कौन करता है?", "opts": ["प्रधानमंत्री", "राष्ट्रपति", "संसद", "उपराष्ट्रपति"], "ans": 1 },
+      { "q": "भारत में कितने प्रकार के आपातकाल का प्रावधान है?", "opts": ["2", "3", "4", "5"], "ans": 1 }
+    ],
+    "अर्थशास्त्र": [
+      { "q": "भारत में GDP की गणना किस विभाग द्वारा की जाती है?", "opts": ["RBI", "CSO", "SEBI", "NITI Aayog"], "ans": 1 },
+      { "q": "भारत की आर्थिक राजधानी कौन सी है?", "opts": ["दिल्ली", "कोलकाता", "मुंबई", "चेन्नई"], "ans": 2 },
+      { "q": "भारत का केंद्रीय बैंक कौन सा है?", "opts": ["SBI", "PNB", "RBI", "NABARD"], "ans": 2 },
+      { "q": "भारत में GST कब लागू हुई?", "opts": ["1 अप्रैल 2017", "1 जुलाई 2017", "1 जनवरी 2017", "15 अगस्त 2017"], "ans": 1 },
+      { "q": "पंचवर्षीय योजना का विचार किस देश से लिया गया?", "opts": ["अमेरिका", "इंग्लैंड", "सोवियत संघ", "चीन"], "ans": 2 }
+    ]
   }
-]
+}

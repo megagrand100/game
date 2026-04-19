@@ -1,58 +1,56 @@
-[
-  {
-    "q": "What does HTML stand for?",
-    "o": ["HyperText Markup Language", "High Transfer Markup Language", "HyperText Machine Language", "Hyperlink and Text Markup Language"],
-    "a": "HyperText Markup Language",
-    "hint": "The 'H' refers to links (hyperlinks) and the 'M' is for markup — structure of web pages",
-    "explanation": "HTML (HyperText Markup Language) is the standard language for web pages. 'HyperText' = text with links. 'Markup' = using tags like <p>, <h1> to structure content. Created by Tim Berners-Lee in 1991."
-  },
-  {
-    "q": "What is the binary representation of the decimal number 13?",
-    "o": ["1011", "1101", "1010", "1110"],
-    "a": "1101",
-    "hint": "13 = 8 + 4 + 1 = 2³ + 2² + 2⁰",
-    "explanation": "13 in binary: 13÷2=6 R1, 6÷2=3 R0, 3÷2=1 R1, 1÷2=0 R1. Reading remainders bottom-up: 1101. Verify: 1×8 + 1×4 + 0×2 + 1×1 = 13 ✓"
-  },
-  {
-    "q": "Which data structure works on the LIFO (Last In, First Out) principle?",
-    "o": ["Queue", "Stack", "Linked List", "Tree"],
-    "a": "Stack",
-    "hint": "Think of a stack of plates — you always add and remove from the top",
-    "explanation": "A Stack follows LIFO: the last element added (pushed) is the first one removed (popped). Real-world examples: browser back button, undo in text editors, function call management in programs."
-  },
-  {
-    "q": "Who is known as the 'Father of the Internet'?",
-    "o": ["Tim Berners-Lee", "Bill Gates", "Vint Cerf", "Dennis Ritchie"],
-    "a": "Vint Cerf",
-    "hint": "He co-created the TCP/IP protocols that power the internet",
-    "explanation": "Vint Cerf (with Bob Kahn) designed TCP/IP in 1974 — the fundamental protocols of the internet. Tim Berners-Lee invented the World Wide Web (WWW) in 1989, which runs ON TOP of the internet."
-  },
-  {
-    "q": "What is a 'deadlock' in operating systems?",
-    "o": ["When CPU overheats", "When two processes wait for each other indefinitely", "When RAM is full", "When a program crashes"],
-    "a": "When two processes wait for each other indefinitely",
-    "hint": "Imagine two people each holding one key the other needs, both waiting",
-    "explanation": "Deadlock occurs when 2+ processes each hold a resource and wait for the other's resource — creating a circular dependency. Four conditions for deadlock: Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait."
-  },
-  {
-    "q": "What does SQL stand for?",
-    "o": ["Structured Query Language", "Simple Query Language", "Sequential Query Language", "Standard Query Logic"],
-    "a": "Structured Query Language",
-    "hint": "It's used to manage and manipulate relational databases",
-    "explanation": "SQL (Structured Query Language) is used to interact with relational databases. Core commands: SELECT (retrieve), INSERT (add), UPDATE (modify), DELETE (remove), CREATE (build tables). Invented by IBM in the 1970s."
-  },
-  {
-    "q": "In Object-Oriented Programming, what does 'encapsulation' mean?",
-    "o": ["Inheriting from parent class", "Wrapping data and methods in a single unit", "Creating multiple object instances", "Hiding the implementation"],
-    "a": "Wrapping data and methods in a single unit",
-    "hint": "Think of a capsule/pill that contains everything inside it",
-    "explanation": "Encapsulation bundles data (attributes) and methods (functions) together inside a class, controlling access via public/private/protected modifiers. It protects internal state and reduces dependencies. Combined with abstraction, it's a core OOP pillar."
-  },
-  {
-    "q": "What is the time complexity of binary search?",
-    "o": ["O(n)", "O(n²)", "O(log n)", "O(n log n)"],
-    "a": "O(log n)",
-    "hint": "Each step eliminates HALF of the remaining elements",
-    "explanation": "Binary search on a sorted array takes O(log n) because each comparison halves the search space. With 1 million elements, it takes at most log₂(1,000,000) ≈ 20 comparisons! Linear search would take up to 1,000,000."
+{
+  "subject": "Computer",
+  "emoji": "💻",
+  "categories": {
+    "O Level": [
+      { "q": "O Level परीक्षा किस संस्था द्वारा आयोजित की जाती है?", "opts": ["CBSE", "NIELIT", "UGC", "AICTE"], "ans": 1 },
+      { "q": "O Level में कुल कितने पेपर होते हैं?", "opts": ["3", "4", "5", "6"], "ans": 1 },
+      { "q": "कौन सी language O Level में शामिल नहीं है?", "opts": ["C Language", "Python", "COBOL", "HTML"], "ans": 2 },
+      { "q": "O Level का पूर्ण रूप क्या है?", "opts": ["Ordinary Level", "Official Level", "Online Level", "Open Level"], "ans": 0 },
+      { "q": "O Level में Practical exam कितने marks का होता है?", "opts": ["50", "60", "70", "80"], "ans": 0 },
+      { "q": "Binary में 1010 का decimal value क्या है?", "opts": ["8", "9", "10", "11"], "ans": 2 },
+      { "q": "RAM का पूर्ण रूप क्या है?", "opts": ["Random Access Memory", "Read All Memory", "Readable Access Memory", "Read Access Module"], "ans": 0 },
+      { "q": "कौन सा input device नहीं है?", "opts": ["Mouse", "Keyboard", "Monitor", "Scanner"], "ans": 2 },
+      { "q": "Internet का पूर्ण रूप क्या है?", "opts": ["International Network", "Interconnected Network", "Internal Network", "Intranet"], "ans": 1 },
+      { "q": "HTML में heading tag कौन सा है?", "opts": ["<h>", "<head>", "<h1>", "<header>"], "ans": 2 },
+      { "q": "IP Address में कितने octets होते हैं?", "opts": ["2", "3", "4", "8"], "ans": 2 },
+      { "q": "कौन सा Operating System नहीं है?", "opts": ["Windows", "Linux", "Android", "Java"], "ans": 3 },
+      { "q": "CPU का पूर्ण रूप क्या है?", "opts": ["Control Processing Unit", "Central Processing Unit", "Computer Processing Unit", "Central Program Unit"], "ans": 1 },
+      { "q": "1 GB = कितने MB?", "opts": ["512", "1000", "1024", "2048"], "ans": 2 },
+      { "q": "WWW का पूर्ण रूप क्या है?", "opts": ["World Wide Web", "World Wide Ware", "Web World Wide", "Wide World Web"], "ans": 0 }
+    ],
+    "CCC": [
+      { "q": "CCC का पूर्ण रूप क्या है?", "opts": ["Computer Course Certificate", "Course on Computer Concepts", "Certificate of Computer Course", "Computer Concepts Course"], "ans": 1 },
+      { "q": "CCC exam में pass करने के लिए minimum marks कितने चाहिए?", "opts": ["33%", "40%", "50%", "60%"], "ans": 2 },
+      { "q": "MS Word में नया document खोलने की shortcut key क्या है?", "opts": ["Ctrl+N", "Ctrl+O", "Ctrl+W", "Ctrl+D"], "ans": 0 },
+      { "q": "LibreOffice में Calc किस application के समान है?", "opts": ["MS Word", "MS Excel", "MS PowerPoint", "MS Access"], "ans": 1 },
+      { "q": "Email का पूर्ण रूप क्या है?", "opts": ["Electronic Mail", "Electrical Mail", "Easy Mail", "Error Mail"], "ans": 0 },
+      { "q": "MS Excel में formula किससे शुरू होता है?", "opts": ["+", "-", "=", "@"], "ans": 2 },
+      { "q": "Internet Explorer किस company का browser है?", "opts": ["Google", "Mozilla", "Microsoft", "Apple"], "ans": 2 },
+      { "q": "PowerPoint presentation की extension क्या होती है?", "opts": [".doc", ".xls", ".ppt", ".pdf"], "ans": 2 },
+      { "q": "Keyboard में function keys की संख्या कितनी होती है?", "opts": ["10", "12", "14", "16"], "ans": 1 },
+      { "q": "Cut की shortcut key क्या है?", "opts": ["Ctrl+C", "Ctrl+X", "Ctrl+V", "Ctrl+Z"], "ans": 1 },
+      { "q": "Social networking site कौन सी है?", "opts": ["Google", "Facebook", "Bing", "Yahoo Mail"], "ans": 1 },
+      { "q": "भारत में internet किस वर्ष शुरू हुआ?", "opts": ["1993", "1995", "1997", "2000"], "ans": 1 },
+      { "q": "Undo की shortcut key क्या है?", "opts": ["Ctrl+Y", "Ctrl+Z", "Ctrl+U", "Ctrl+A"], "ans": 1 },
+      { "q": "कौन सा free email service provider नहीं है?", "opts": ["Gmail", "Yahoo Mail", "Outlook", "None of these"], "ans": 3 },
+      { "q": "Mouse में आमतौर पर कितने buttons होते हैं?", "opts": ["1", "2", "3", "4"], "ans": 1 }
+    ],
+    "MS Office": [
+      { "q": "MS Word में page break insert करने की shortcut key?", "opts": ["Ctrl+Enter", "Ctrl+Break", "Ctrl+B", "Alt+Enter"], "ans": 0 },
+      { "q": "MS Excel में cell A1 में जाने की shortcut key?", "opts": ["Ctrl+Home", "Ctrl+A1", "F5", "Ctrl+G"], "ans": 0 },
+      { "q": "PowerPoint में new slide add करने की shortcut?", "opts": ["Ctrl+M", "Ctrl+N", "Ctrl+S", "Ctrl+D"], "ans": 0 },
+      { "q": "MS Word में word count कहाँ दिखता है?", "opts": ["Home tab", "Insert tab", "Status bar", "Review tab"], "ans": 2 },
+      { "q": "Excel में SUM formula का उदाहरण:", "opts": ["=SUM(A1:A10)", "SUM(A1:A10)", "=ADD(A1:A10)", "=TOTAL(A1:A10)"], "ans": 0 },
+      { "q": "MS Access किस प्रकार का software है?", "opts": ["Word Processor", "Spreadsheet", "Database", "Presentation"], "ans": 2 },
+      { "q": "MS Word में table insert करने का option किस tab में है?", "opts": ["Home", "Insert", "Layout", "Review"], "ans": 1 },
+      { "q": "PowerPoint presentation को PDF में save करने के लिए?", "opts": ["File > Save", "File > Save As > PDF", "File > Export > PDF", "B और C दोनों"], "ans": 3 }
+    ],
+    "NIELIT": [
+      { "q": "NIELIT का पूर्ण रूप क्या है?", "opts": ["National Institute of Electronics and Information Technology", "National IT Electronics Learning", "New Information Electronics Learning IT", "None"], "ans": 0 },
+      { "q": "NIELIT का मुख्यालय कहाँ है?", "opts": ["मुंबई", "नई दिल्ली", "बेंगलुरु", "चेन्नई"], "ans": 1 },
+      { "q": "NIELIT के अंतर्गत कौन सा course नहीं आता?", "opts": ["O Level", "A Level", "B Level", "MBA"], "ans": 3 },
+      { "q": "NIELIT certificate कितने स्तरों में मिलता है?", "opts": ["2", "3", "4", "5"], "ans": 2 }
+    ]
   }
-]
+}
