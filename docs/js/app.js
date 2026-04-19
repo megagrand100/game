@@ -63,12 +63,16 @@ async function loadSubjectsData() {
 async function loadQuestions(subjectId) {
   if (App.allQuestions[subjectId]) return App.allQuestions[subjectId];
   const fileMap = {
-    math:    'math.json',    english: 'english.json',
-    hindi:   'hindi.json',   science: 'science.json',
-    gk:      'gk.json',      computer:'computer.json',
-    sanskrit:'sanskrit.json',current: 'current_affairs.json',
-    states:  'states_gk.json'
-  };
+  math:    'math.json',
+  english: 'english.json',
+  hindi:   'hindi.json',
+  science: 'science.json',
+  gk:      'gk.json',
+  computer:'computer.json',
+  sanskrit:'sanskrit.json',
+  current: 'current_affairs.json',
+  states:  'states_gk.json'
+};
   try {
     const res = await fetch(`./data/questions/${fileMap[subjectId] || 'gk.json'}`);
     App.allQuestions[subjectId] = await res.json();
