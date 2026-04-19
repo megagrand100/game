@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 ══════════════════════════════════ */
 async function loadSubjectsData() {
   try {
-    const res = await fetch('data/subjects.json');
+    const res = await fetch('./data/subjects.json');
     App.subjectsData = await res.json();
   } catch {
     App.subjectsData = getDefaultSubjectsData();
@@ -70,7 +70,7 @@ async function loadQuestions(subjectId) {
     states:  'states_gk.json'
   };
   try {
-    const res = await fetch(`data/questions/${fileMap[subjectId] || 'gk.json'}`);
+    const res = await fetch(`./data/questions/${fileMap[subjectId] || 'gk.json'}`);
     App.allQuestions[subjectId] = await res.json();
   } catch {
     App.allQuestions[subjectId] = null;
