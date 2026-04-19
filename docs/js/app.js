@@ -31,6 +31,9 @@ const FILE_MAP = {
   sanskrit:'sanskrit.json', current:'current_affairs.json', states:'states_gk.json'
 };
 
+// GitHub Pages पर exact base URL
+const BASE_URL = 'https://megagrand100.github.io/game';
+
 const App = {
   user:null, token:null,
   selectedSubject:null, selectedSub:null, selectedState:null,
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadJSON(id) {
   if(App.loadedJSON[id]) return App.loadedJSON[id];
   const file=FILE_MAP[id]||'gk.json';
-  const paths=['./data/questions/'+file,'data/questions/'+file,'/game/docs/data/questions/'+file];
+  const paths=[BASE_URL+'/data/questions/'+file,'./data/questions/'+file,'data/questions/'+file];
   for(const p of paths){
     try{
       const r=await fetch(p);
