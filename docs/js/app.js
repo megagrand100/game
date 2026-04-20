@@ -74,13 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ══ JSON LOAD ══ */
 async function loadJSON(id) {
   if(App.loadedJSON[id]) return App.loadedJSON[id];
-  const file=FILE_MAP[id]||'gk.json';
-  const paths=[BASE_URL+'/data/questions/'+file,'./data/questions/'+file,'data/questions/'+file];
+  const file = FILE_MAP[id] || 'gk.json';
+  
+  // Sahi paths: Pehla GitHub ka direct path, dusra local backup
+  const paths = [
+    BASE_URL + file, 
+    './data/questions/' + file
+  ];
+
   for(const p of paths){
     try{
-      const r=await fetch(p);
-      if(r.ok){const d=await r.json(); App.loadedJSON[id]=d; return d;}
-    }catch{}
+      const r = await fetch(p);
+      if(r.ok){
+        const d = await r.json(); 
+        App.loadedJSON[id] = d; 
+        return d;
+      }
+    }catch(e){ console.error("Fetch error:", e); }
   }
   return null;
 }
