@@ -32,7 +32,7 @@ const FILE_MAP = {
 };
 
 // GitHub Pages पर exact base URL
-const BASE_URL = 'https://megagrand100.github.io/game';
+const BASE_URL = 'https://raw.githubusercontent.com/megagrand100/game/refs/heads/main/docs/questions/.';
 
 const App = {
   user:null, token:null,
